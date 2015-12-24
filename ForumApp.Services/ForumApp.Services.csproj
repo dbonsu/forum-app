@@ -46,11 +46,26 @@
   <ItemGroup>
     <Compile Include="Interfaces\IForumService.cs" />
     <Compile Include="Interfaces\IIMServices.cs" />
+    <Compile Include="Interfaces\ILoginAttemptService.cs" />
+    <Compile Include="Interfaces\IPasswordService.cs" />
+    <Compile Include="Interfaces\IThreadReplyService.cs" />
     <Compile Include="Interfaces\IThreadServices.cs" />
+    <Compile Include="Interfaces\ITopicService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumApp.BusinessEntities\ForumApp.BusinessEntities.csproj">
+      <Project>{635e1d50-9fa9-4ae1-95fe-44131194d355}</Project>
+      <Name>ForumApp.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApp.DataModel\ForumApp.DataModel.csproj">
+      <Project>{91bbe904-f187-4ff3-bc22-3b54802a341c}</Project>
+      <Name>ForumApp.DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
