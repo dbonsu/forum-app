@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ForumApp.DataModel.Repository.Interfaces
 {
-    public interface IGenericRepository<TEntity> : IDisposable
+    /// <summary>
+    /// Repository for handling all generic db calls
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    public interface IGenericRepository<TEntity>
     {
         /// <summary>
         /// Deletes entity in db based on id
@@ -41,7 +45,7 @@ namespace ForumApp.DataModel.Repository.Interfaces
         TEntity Get(Func<TEntity, Boolean> where);
 
         /// <summary>
-        /// Get all the records from db
+        /// Gets all the records from db
         /// </summary>
         /// <returns></returns>
         IEnumerable<TEntity> GetAll();
@@ -68,7 +72,7 @@ namespace ForumApp.DataModel.Repository.Interfaces
         TEntity GetByID(object id);
 
         /// <summary>
-        /// Gets first Entity in db
+        /// Gets first Entity in db based on a predicate
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
@@ -98,7 +102,7 @@ namespace ForumApp.DataModel.Repository.Interfaces
         void Insert(TEntity entity);
 
         /// <summary>
-        /// Generic update method for the entities
+        /// Updates an entity in db
         /// </summary>
         /// <param name="entity"></param>
         void Update(TEntity entity);
