@@ -72,7 +72,8 @@
     <Compile Include="ForumThread.cs">
       <DependentUpon>ForumAppDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Generic Repository\GenericRepository.cs" />
+    <Compile Include="GenericRepository\GenericRepository.cs" />
+    <Compile Include="GenericRepository\Interfaces\IGenericRepository.cs" />
     <Compile Include="InstantMessage.cs">
       <DependentUpon>ForumAppDataModel.tt</DependentUpon>
     </Compile>
