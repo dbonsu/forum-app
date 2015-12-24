@@ -1,5 +1,5 @@
-﻿using ForumApp.DataModel.GenericRepository;
-using ForumApp.DataModel.GenericRepository.Interfaces;
+﻿using ForumApp.DataModel.Repository;
+using ForumApp.DataModel.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApp.DataModel.GenericRepository
+namespace ForumApp.DataModel.Repository
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {

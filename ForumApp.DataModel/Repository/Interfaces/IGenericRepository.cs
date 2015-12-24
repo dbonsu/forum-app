@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApp.DataModel.GenericRepository.Interfaces
+namespace ForumApp.DataModel.Repository.Interfaces
 {
     public interface IGenericRepository<TEntity> : IDisposable
     {
