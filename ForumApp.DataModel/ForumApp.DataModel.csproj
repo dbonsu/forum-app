@@ -118,6 +118,9 @@
     <Compile Include="User.cs">
       <DependentUpon>ForumAppDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserSubscription.cs">
+      <DependentUpon>ForumAppDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

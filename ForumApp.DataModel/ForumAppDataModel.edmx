@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ForumAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ForumAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Forum">
           <Key>
             <PropertyRef Name="ID" />
@@ -132,6 +132,15 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="RoleID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSubscription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="SubscriptionID" Type="bigint" Nullable="false" />
+          <Property Name="SubscriptionType" Type="nchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <Association Name="FK_Forum_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -277,6 +286,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserSubscription_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSubscription" Type="Self.UserSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserSubscription">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -321,6 +342,7 @@
           <EntitySet Name="ThreadReply" EntityType="Self.ThreadReply" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSubscription" EntityType="Self.UserSubscription" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Forum_User" Association="Self.FK_Forum_User">
             <End Role="User" EntitySet="User" />
             <End Role="Forum" EntitySet="Forum" />
@@ -369,9 +391,12 @@
             <End Role="User" EntitySet="User" />
             <End Role="Profile" EntitySet="Profile" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserSubscription_User" Association="Self.FK_UserSubscription_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserSubscription" EntitySet="UserSubscription" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ForumAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -526,6 +551,7 @@
           <NavigationProperty Name="Passwords" Relationship="Self.FK_Password_User" FromRole="User" ToRole="Password" />
           <NavigationProperty Name="Profiles" Relationship="Self.FK_UserProfile_User" FromRole="User" ToRole="Profile" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="UserSubscriptions" Relationship="ForumAppModel.FK_UserSubscription_User" FromRole="User" ToRole="UserSubscription" />
         </EntityType>
         <Association Name="FK_Forum_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -762,6 +788,11 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="UserSubscriptions" EntityType="ForumAppModel.UserSubscription" />
+          <AssociationSet Name="FK_UserSubscription_User" Association="ForumAppModel.FK_UserSubscription_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSubscription" EntitySet="UserSubscriptions" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -774,6 +805,28 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="UserSubscription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="SubscriptionID" Type="Int64" Nullable="false" />
+          <Property Name="SubscriptionType" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="ForumAppModel.FK_UserSubscription_User" FromRole="UserSubscription" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserSubscription_User">
+          <End Type="ForumAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="ForumAppModel.UserSubscription" Role="UserSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserSubscription">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -944,6 +997,16 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ForumAppModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ForumAppModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="UserSubscriptions">
+            <EntityTypeMapping TypeName="ForumAppModel.UserSubscription">
+              <MappingFragment StoreEntitySet="UserSubscription">
+                <ScalarProperty Name="SubscriptionType" ColumnName="SubscriptionType" />
+                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -29,6 +29,8 @@
         <AssociationConnector Association="ForumAppModel.FK_Password_User" ManuallyRouted="false" />
         <AssociationConnector Association="ForumAppModel.FK_UserProfile_User" ManuallyRouted="false" />
         <AssociationConnector Association="ForumAppModel.FK_User_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ForumAppModel.UserSubscription" Width="1.5" PointX="5.25" PointY="18.875" />
+        <AssociationConnector Association="ForumAppModel.FK_UserSubscription_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

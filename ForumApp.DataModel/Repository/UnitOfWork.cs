@@ -26,6 +26,7 @@ namespace ForumApp.DataModel.Repository
         private GenericRepository<ThreadReply> _threadReplyRepository;
         private GenericRepository<Topic> _topicRepository;
         private GenericRepository<User> _userRepository;
+        private GenericRepository<UserSubscription> _userSubscription;
 
         /// <summary>
         /// Constructor
@@ -206,6 +207,19 @@ namespace ForumApp.DataModel.Repository
             set
             {
                 this._userRepository = new GenericRepository<User>(_context);
+            }
+        }
+
+        public GenericRepository<UserSubscription> UserSubscription
+        {
+            get
+            {
+                return this._userSubscription;
+            }
+
+            set
+            {
+                this._userSubscription = new GenericRepository<UserSubscription>(_context);
             }
         }
 

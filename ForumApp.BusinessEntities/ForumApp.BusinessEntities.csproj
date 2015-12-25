@@ -52,6 +52,7 @@
     <Compile Include="ThreadReplyEntity.cs" />
     <Compile Include="TopicEntity.cs" />
     <Compile Include="UserEntity.cs" />
+    <Compile Include="UserSubscriptionEntity.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

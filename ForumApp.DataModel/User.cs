@@ -24,6 +24,7 @@ namespace ForumApp.DataModel
             this.LoginAttempts = new HashSet<LoginAttempt>();
             this.Passwords = new HashSet<Password>();
             this.Profiles = new HashSet<Profile>();
+            this.UserSubscriptions = new HashSet<UserSubscription>();
         }
     
         public long ID { get; set; }
@@ -47,5 +48,7 @@ namespace ForumApp.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Profile> Profiles { get; set; }
         public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserSubscription> UserSubscriptions { get; set; }
     }
 }

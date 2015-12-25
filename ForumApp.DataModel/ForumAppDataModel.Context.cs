@@ -39,6 +39,7 @@ namespace ForumApp.DataModel
         public virtual DbSet<ThreadReply> ThreadReplies { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserSubscription> UserSubscriptions { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

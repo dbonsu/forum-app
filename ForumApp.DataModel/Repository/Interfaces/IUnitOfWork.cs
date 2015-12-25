@@ -19,6 +19,7 @@ namespace ForumApp.DataModel.Repository.Interfaces
         GenericRepository<ThreadReply> ThreadReplyRepository { get; set; }
         GenericRepository<Topic> TopicRepository { get; set; }
         GenericRepository<User> UserRepository { get; set; }
+        GenericRepository<UserSubscription> UserSubscription { get; set; }
 
         /// <summary>
         /// Save method.
