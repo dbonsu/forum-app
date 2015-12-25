@@ -33,6 +33,13 @@ namespace ForumApp.Services.Interfaces
         IEnumerable<ForumEntity> GetAllForumEntities();
 
         /// <summary>
+        /// Retrieves all topics for a forum
+        /// </summary>
+        /// <param name="topicID"></param>
+        /// <returns></returns>
+        IEnumerable<TopicEntity> GetAllTopicsByForumId(long forumID);
+
+        /// <summary>
         /// Returns a ForumEntity
         /// </summary>
         /// <param name="forumID"></param>
@@ -40,10 +47,11 @@ namespace ForumApp.Services.Interfaces
         ForumEntity GetForumByID(long forumID);
 
         /// <summary>
-        /// Retrieves forums by user
+        /// Retrieve forum for user
         /// </summary>
+        /// <param name="userID"></param>
         /// <returns></returns>
-        IEnumerable<ForumEntity> GetForumEntityByUserID();
+        IEnumerable<ForumEntity> GetForumEntityByUserID(long userID);
 
         /// <summary>
         /// Updates an existing forum

@@ -27,18 +27,18 @@ namespace ForumApp.Services.Interfaces
         bool DeleteThreadReply(long threadReplyID);
 
         /// <summary>
-        /// Retrieved all replies for a thread
-        /// </summary>
-        /// <param name="threadID"></param>
-        /// <returns></returns>
-        IEnumerable<ThreadReplyEntity> GetAllThreadRepliesByThreadID(long threadID);
-
-        /// <summary>
         /// Retrieves all replies for a user
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
         IEnumerable<ThreadReplyEntity> GetAllThreadRepliesByUserID(long userID);
+
+        /// <summary>
+        /// Gets a reply by id
+        /// </summary>
+        /// <param name="threadReplyID"></param>
+        /// <returns></returns>
+        ThreadReplyEntity GetThreadReplyByID(long threadReplyID);
 
         /// <summary>
         /// updates a reply

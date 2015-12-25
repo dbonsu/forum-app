@@ -17,7 +17,6 @@ namespace ForumApp.DataModel.Repository
     {
         internal ForumEntities Context;
         internal DbSet<TEntity> DbSet;
-        private bool dispose = false;
 
         /// <summary>
         /// Constructor
