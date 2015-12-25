@@ -17,7 +17,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        int CreateUser(UserEntity user);
+        long CreateUser(UserEntity user);
 
         /// <summary>
         /// Deletes a user

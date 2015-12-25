@@ -17,7 +17,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="im"></param>
         /// <returns></returns>
-        int CreateInstantMessage(InstantMessageEntity im);
+        long CreateInstantMessage(InstantMessageEntity im);
 
         /// <summary>
         /// Removes an IM if not sent

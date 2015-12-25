@@ -17,7 +17,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="loginAttempt"></param>
         /// <returns></returns>
-        bool CreateLoginAttempt(LoginAttemptEntity loginAttempt);
+        long CreateLoginAttempt(LoginAttemptEntity loginAttempt);
 
         /// <summary>
         /// Removes a login Attempt

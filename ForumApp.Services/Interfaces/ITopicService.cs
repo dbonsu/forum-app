@@ -17,7 +17,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="topic"></param>
         /// <returns></returns>
-        int CreateNewTopic(TopicEntity topic);
+        long CreateNewTopic(TopicEntity topic);
 
         /// <summary>
         /// Deletes a topic

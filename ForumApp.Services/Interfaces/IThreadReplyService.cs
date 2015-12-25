@@ -17,7 +17,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="threadReply"></param>
         /// <returns></returns>
-        int CreateThreadReply(ThreadReplyEntity threadReply);
+        long CreateThreadReply(ThreadReplyEntity threadReply);
 
         /// <summary>
         /// Deletes a reply that has not been posted

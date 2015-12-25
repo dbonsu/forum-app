@@ -13,18 +13,17 @@ namespace ForumApp.DataModel.Repository
     /// Generic Repository implementation for handling basic db calls
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : BaseRepository, IGenericRepository<TEntity> where TEntity : class
     {
-        internal ForumEntities Context;
         internal DbSet<TEntity> DbSet;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="context"></param>
-        public GenericRepository(ForumEntities context)
+        public GenericRepository(ForumAppEntities context)
         {
-            this.Context = context;
+            _context = context;
             this.DbSet = context.Set<TEntity>();
         }
 
@@ -44,7 +43,7 @@ namespace ForumApp.DataModel.Repository
         /// <param name="entityToDelete"></param>
         public virtual void Delete(TEntity entityToDelete)
         {
-            if (Context.Entry(entityToDelete).State == EntityState.Detached)
+            if (_context.Entry(entityToDelete).State == EntityState.Detached)
             {
                 DbSet.Attach(entityToDelete);
             }
@@ -178,7 +177,7 @@ namespace ForumApp.DataModel.Repository
         public virtual void Update(TEntity entity)
         {
             DbSet.Attach(entity);
-            Context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

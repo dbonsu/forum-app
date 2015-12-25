@@ -89,7 +89,9 @@
     <Compile Include="Profile.cs">
       <DependentUpon>ForumAppModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\Interfaces\IBaseRepository.cs" />
     <Compile Include="Repository\Interfaces\IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />

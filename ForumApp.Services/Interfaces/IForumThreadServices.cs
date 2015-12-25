@@ -9,7 +9,7 @@ namespace ForumApp.Services.Interfaces
 {
     public interface IForumThreadServices
     {
-        int CreateForumThread(ForumThreadEntity thread);
+        long CreateForumThread(ForumThreadEntity thread);
 
         bool DeleteThread(long threadID);
 

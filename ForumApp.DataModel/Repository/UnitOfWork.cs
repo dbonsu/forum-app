@@ -13,7 +13,7 @@ namespace ForumApp.DataModel.Repository
     /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
-        private ForumEntities _context = null;
+        private ForumAppEntities _context = null;
         private bool _dispose = false;
         private GenericRepository<Forum> _forumRepository;
         private GenericRepository<ForumThread> _forumThreadRepository;
@@ -32,9 +32,9 @@ namespace ForumApp.DataModel.Repository
         /// Constructor
         /// </summary>
         /// <param name="context"></param>
-        public UnitOfWork(ForumEntities context)
+        public UnitOfWork(ForumAppEntities context)
         {
-            _context = new ForumEntities();
+            _context = new ForumAppEntities();
         }
 
         /// <summary>

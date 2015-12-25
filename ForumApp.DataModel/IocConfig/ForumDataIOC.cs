@@ -15,6 +15,7 @@ namespace ForumApp.DataModel.IocConfig
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<BaseRepository>().As<IBaseRepository>().InstancePerLifetimeScope();
         }
     }
 }

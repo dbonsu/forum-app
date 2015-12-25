@@ -14,7 +14,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="password"></param>
         /// <returns></returns>
-        int CreatePassword(PasswordEntity password);
+        long CreatePassword(PasswordEntity password);
 
         /// <summary>
         /// Retrieves all passwords for a user

@@ -17,7 +17,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="newForum"></param>
         /// <returns></returns>
-        int CreateNewForum(ForumEntity newForum);
+        long CreateNewForum(ForumEntity newForum);
 
         /// <summary>
         /// Removes existing forum entity
