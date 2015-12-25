@@ -10,7 +10,7 @@ namespace ForumApp.DataModel.Repository.Interfaces
     {
         GenericRepository<Forum> ForumRepository { get; set; }
         GenericRepository<ForumThread> ForumThreadRepository { get; set; }
-        GenericRepository<InstantMessageReply> InstantMessageReply { get; set; }
+
         GenericRepository<InstantMessage> InstantMessageRepository { get; set; }
         GenericRepository<LoginAttempt> LoginAttemptRepository { get; set; }
         GenericRepository<Password> PasswordRepository { get; set; }

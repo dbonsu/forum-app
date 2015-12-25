@@ -14,12 +14,6 @@ namespace ForumApp.DataModel
     
     public partial class InstantMessage
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public InstantMessage()
-        {
-            this.InstantMessageReplies = new HashSet<InstantMessageReply>();
-        }
-    
         public long ID { get; set; }
         public string Body { get; set; }
         public System.DateTime CreationDate { get; set; }
@@ -27,10 +21,9 @@ namespace ForumApp.DataModel
         public long FromUser { get; set; }
         public Nullable<bool> IsNew { get; set; }
         public Nullable<bool> IsSent { get; set; }
+        public Nullable<long> ParentID { get; set; }
     
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InstantMessageReply> InstantMessageReplies { get; set; }
     }
 }

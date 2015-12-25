@@ -22,7 +22,7 @@ namespace ForumApp.DataModel
     
         public long ID { get; set; }
         public long TopicID { get; set; }
-        public long CreatedBy { get; set; }
+        public long UserID { get; set; }
         public string Body { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public Nullable<bool> Visible { get; set; }

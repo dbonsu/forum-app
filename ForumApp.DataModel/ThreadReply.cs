@@ -15,8 +15,8 @@ namespace ForumApp.DataModel
     public partial class ThreadReply
     {
         public long ID { get; set; }
-        public long ThreadID { get; set; }
-        public long CreatedBy { get; set; }
+        public long ForumThreadID { get; set; }
+        public long UserID { get; set; }
         public string Body { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public Nullable<bool> IsPosted { get; set; }

@@ -17,7 +17,7 @@ namespace ForumApp.DataModel.Repository
         private bool _dispose = false;
         private GenericRepository<Forum> _forumRepository;
         private GenericRepository<ForumThread> _forumThreadRepository;
-        private GenericRepository<InstantMessageReply> _instantMessageReplyRepository;
+
         private GenericRepository<InstantMessage> _instantMessageRepository;
         private GenericRepository<LoginAttempt> _loginAttemptRepository;
         private GenericRepository<Password> _passwordRepository;
@@ -64,21 +64,6 @@ namespace ForumApp.DataModel.Repository
             set
             {
                 this._forumThreadRepository = new GenericRepository<ForumThread>(_context);
-            }
-        }
-
-        /// <summary>
-        /// Getter/Setter
-        /// </summary>
-        public GenericRepository<InstantMessageReply> InstantMessageReply
-        {
-            get
-            {
-                return this._instantMessageReplyRepository;
-            }
-            set
-            {
-                this._instantMessageReplyRepository = new GenericRepository<InstantMessageReply>(_context);
             }
         }
 

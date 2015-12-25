@@ -61,5 +61,11 @@ namespace ForumApp.Services.Interfaces
         /// <param name="imID"></param>
         /// <returns></returns>
         bool UpdateInstantMessage(InstantMessageEntity im, long imID);
+
+        /// <summary>
+        /// Creates a new IMReply
+        /// </summary>
+        /// <param name="imReply"></param>
+        /// <returns></returns>
     }
 }

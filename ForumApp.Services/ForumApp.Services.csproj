@@ -53,7 +53,7 @@
     <Compile Include="Interfaces\ILoginAttemptService.cs" />
     <Compile Include="Interfaces\IPasswordService.cs" />
     <Compile Include="Interfaces\IThreadReplyService.cs" />
-    <Compile Include="Interfaces\IThreadServices.cs" />
+    <Compile Include="Interfaces\IForumThreadServices.cs" />
     <Compile Include="Interfaces\ITopicService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IUserSubscriptionService.cs" />

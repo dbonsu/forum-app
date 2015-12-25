@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ForumApp.Services.Interfaces
 {
-    public interface IThreadServices
+    public interface IForumThreadServices
     {
         int CreateForumThread(ForumThreadEntity thread);
 

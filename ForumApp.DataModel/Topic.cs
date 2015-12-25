@@ -22,7 +22,7 @@ namespace ForumApp.DataModel
     
         public long ID { get; set; }
         public long ForumID { get; set; }
-        public long CreatedBy { get; set; }
+        public long UserID { get; set; }
         public string Subject { get; set; }
         public bool Visible { get; set; }
         public int IsSticky { get; set; }

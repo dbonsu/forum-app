@@ -14,12 +14,9 @@ namespace ForumApp.BusinessEntities
         public virtual UserEntity FromUserEntity { get; set; }
         public long ID { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IMReplyEntity> InstantMessageReplies { get; set; }
-
         public Nullable<bool> IsNew { get; set; }
         public Nullable<bool> IsSent { get; set; }
-
+        public Nullable<long> ParentID { get; set; }
         public long ToUser { get; set; }
         public virtual UserEntity ToUserEntity { get; set; }
     }
