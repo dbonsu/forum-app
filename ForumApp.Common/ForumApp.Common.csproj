@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAB1EEFE-DAA7-4B62-94A5-E3A8FB5906A7}</ProjectGuid>
+    <ProjectGuid>{899A500A-D7D8-4963-B2CE-78513C5E03E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ForumApp.Services</RootNamespace>
-    <AssemblyName>ForumApp.Services</AssemblyName>
+    <RootNamespace>ForumApp.Common</RootNamespace>
+    <AssemblyName>ForumApp.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,10 +34,6 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,34 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IForumService.cs" />
-    <Compile Include="Interfaces\IIMServices.cs" />
-    <Compile Include="Interfaces\ILoginAttemptService.cs" />
-    <Compile Include="Interfaces\IPasswordService.cs" />
-    <Compile Include="Interfaces\IThreadReplyService.cs" />
-    <Compile Include="Interfaces\IThreadServices.cs" />
-    <Compile Include="Interfaces\ITopicService.cs" />
-    <Compile Include="Interfaces\IUserService.cs" />
-    <Compile Include="Interfaces\IUserSubscriptionService.cs" />
-    <Compile Include="IocConfig\ServiceIOC.cs" />
+    <Compile Include="CustomModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ForumApp.BusinessEntities\ForumApp.BusinessEntities.csproj">
-      <Project>{635e1d50-9fa9-4ae1-95fe-44131194d355}</Project>
-      <Name>ForumApp.BusinessEntities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ForumApp.Common\ForumApp.Common.csproj">
-      <Project>{899a500a-d7d8-4963-b2ce-78513c5e03e4}</Project>
-      <Name>ForumApp.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ForumApp.DataModel\ForumApp.DataModel.csproj">
-      <Project>{91bbe904-f187-4ff3-bc22-3b54802a341c}</Project>
-      <Name>ForumApp.DataModel</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

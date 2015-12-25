@@ -148,6 +148,12 @@
       <LastGenOutput>ForumAppDataModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumApp.Common\ForumApp.Common.csproj">
+      <Project>{899a500a-d7d8-4963-b2ce-78513c5e03e4}</Project>
+      <Name>ForumApp.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
