@@ -26,6 +26,7 @@ namespace ForumApp.DataModel
         public long ToUser { get; set; }
         public long FromUser { get; set; }
         public Nullable<bool> IsNew { get; set; }
+        public Nullable<bool> IsSent { get; set; }
     
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }

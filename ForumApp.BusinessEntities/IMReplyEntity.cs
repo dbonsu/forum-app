@@ -15,6 +15,8 @@ namespace ForumApp.BusinessEntities
         public virtual InstantMessageEntity InstantMessage { get; set; }
         public long InstantMessageID { get; set; }
         public bool IsNew { get; set; }
+        public Nullable<bool> IsNew { get; set; }
+        public Nullable<bool> IsSent { get; set; }
         public long ToUser { get; set; }
     }
 }

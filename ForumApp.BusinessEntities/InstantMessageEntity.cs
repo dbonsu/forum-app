@@ -18,6 +18,8 @@ namespace ForumApp.BusinessEntities
         public virtual ICollection<IMReplyEntity> InstantMessageReplies { get; set; }
 
         public Nullable<bool> IsNew { get; set; }
+        public Nullable<bool> IsSent { get; set; }
+
         public long ToUser { get; set; }
         public virtual UserEntity ToUserEntity { get; set; }
     }

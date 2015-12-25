@@ -20,7 +20,8 @@ namespace ForumApp.DataModel
         public System.DateTime CreationDate { get; set; }
         public long ToUser { get; set; }
         public long FromUser { get; set; }
-        public bool IsNew { get; set; }
+        public Nullable<bool> IsNew { get; set; }
+        public Nullable<bool> IsSent { get; set; }
     
         public virtual InstantMessage InstantMessage { get; set; }
     }

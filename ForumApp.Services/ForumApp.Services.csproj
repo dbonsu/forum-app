@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\IThreadServices.cs" />
     <Compile Include="Interfaces\ITopicService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IUserSubscriptionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

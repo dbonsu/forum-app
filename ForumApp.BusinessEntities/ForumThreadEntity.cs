@@ -13,12 +13,14 @@ namespace ForumApp.BusinessEntities
         public System.DateTime CreatedOn { get; set; }
         public long ID { get; set; }
 
+        public Nullable<bool> IsPosted { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThreadReplyEntity> ThreadReplies { get; set; }
 
         public virtual TopicEntity Topic { get; set; }
         public long TopicID { get; set; }
         public virtual UserEntity User { get; set; }
-        public bool Visible { get; set; }
+        public Nullable<bool> Visible { get; set; }
     }
 }

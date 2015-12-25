@@ -13,6 +13,7 @@ namespace ForumApp.BusinessEntities
         public System.DateTime CreatedOn { get; set; }
         public virtual ForumThreadEntity ForumThread { get; set; }
         public long ID { get; set; }
+        public Nullable<bool> IsPosted { get; set; }
         public long ThreadID { get; set; }
     }
 }

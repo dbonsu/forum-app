@@ -19,6 +19,7 @@ namespace ForumApp.DataModel
         public long CreatedBy { get; set; }
         public string Body { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public Nullable<bool> IsPosted { get; set; }
     
         public virtual ForumThread ForumThread { get; set; }
     }

@@ -25,7 +25,8 @@ namespace ForumApp.DataModel
         public long CreatedBy { get; set; }
         public string Body { get; set; }
         public System.DateTime CreatedOn { get; set; }
-        public bool Visible { get; set; }
+        public Nullable<bool> Visible { get; set; }
+        public Nullable<bool> IsPosted { get; set; }
     
         public virtual Topic Topic { get; set; }
         public virtual User User { get; set; }

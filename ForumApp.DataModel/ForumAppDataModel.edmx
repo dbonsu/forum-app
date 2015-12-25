@@ -23,7 +23,8 @@
           <Property Name="CreatedBy" Type="bigint" Nullable="false" />
           <Property Name="Body" Type="ntext" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="Visible" Type="bit" Nullable="false" />
+          <Property Name="Visible" Type="bit" />
+          <Property Name="IsPosted" Type="bit" />
         </EntityType>
         <EntityType Name="InstantMessage">
           <Key>
@@ -35,6 +36,7 @@
           <Property Name="ToUser" Type="bigint" Nullable="false" />
           <Property Name="FromUser" Type="bigint" Nullable="false" />
           <Property Name="IsNew" Type="bit" />
+          <Property Name="IsSent" Type="bit" />
         </EntityType>
         <EntityType Name="InstantMessageReply">
           <Key>
@@ -46,7 +48,8 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="ToUser" Type="bigint" Nullable="false" />
           <Property Name="FromUser" Type="bigint" Nullable="false" />
-          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="IsSent" Type="bit" />
         </EntityType>
         <EntityType Name="LoginAttempt">
           <Key>
@@ -107,6 +110,7 @@
           <Property Name="CreatedBy" Type="bigint" Nullable="false" />
           <Property Name="Body" Type="ntext" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsPosted" Type="bit" />
         </EntityType>
         <EntityType Name="Topic">
           <Key>
@@ -420,10 +424,11 @@
           <Property Name="CreatedBy" Type="Int64" Nullable="false" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" />
           <NavigationProperty Name="Topic" Relationship="Self.FK_ForumThread_Topic" FromRole="ForumThread" ToRole="Topic" />
           <NavigationProperty Name="User" Relationship="Self.FK_ForumThread_User" FromRole="ForumThread" ToRole="User" />
           <NavigationProperty Name="ThreadReplies" Relationship="Self.FK_ThreadReply_Thread" FromRole="ForumThread" ToRole="ThreadReply" />
+          <Property Name="IsPosted" Type="Boolean" />
         </EntityType>
         <EntityType Name="InstantMessage">
           <Key>
@@ -438,6 +443,7 @@
           <NavigationProperty Name="User" Relationship="Self.FK_InstantMessage_FromUser" FromRole="InstantMessage" ToRole="User" />
           <NavigationProperty Name="User1" Relationship="Self.FK_InstantMessage_ToUser" FromRole="InstantMessage" ToRole="User" />
           <NavigationProperty Name="InstantMessageReplies" Relationship="Self.FK_InstantMessageReply_InstantMessage" FromRole="InstantMessage" ToRole="InstantMessageReply" />
+          <Property Name="IsSent" Type="Boolean" />
         </EntityType>
         <EntityType Name="InstantMessageReply">
           <Key>
@@ -449,8 +455,9 @@
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ToUser" Type="Int64" Nullable="false" />
           <Property Name="FromUser" Type="Int64" Nullable="false" />
-          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="IsNew" Type="Boolean" />
           <NavigationProperty Name="InstantMessage" Relationship="Self.FK_InstantMessageReply_InstantMessage" FromRole="InstantMessageReply" ToRole="InstantMessage" />
+          <Property Name="IsSent" Type="Boolean" />
         </EntityType>
         <EntityType Name="LoginAttempt">
           <Key>
@@ -516,6 +523,7 @@
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="ForumThread" Relationship="Self.FK_ThreadReply_Thread" FromRole="ThreadReply" ToRole="ForumThread" />
+          <Property Name="IsPosted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Topic">
           <Key>
@@ -846,6 +854,7 @@
           <EntitySetMapping Name="ForumThreads">
             <EntityTypeMapping TypeName="ForumAppModel.ForumThread">
               <MappingFragment StoreEntitySet="ForumThread">
+                <ScalarProperty Name="IsPosted" ColumnName="IsPosted" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TopicID" ColumnName="TopicID" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -858,6 +867,7 @@
           <EntitySetMapping Name="InstantMessages">
             <EntityTypeMapping TypeName="ForumAppModel.InstantMessage">
               <MappingFragment StoreEntitySet="InstantMessage">
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
@@ -870,6 +880,7 @@
           <EntitySetMapping Name="InstantMessageReplies">
             <EntityTypeMapping TypeName="ForumAppModel.InstantMessageReply">
               <MappingFragment StoreEntitySet="InstantMessageReply">
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="InstantMessageID" ColumnName="InstantMessageID" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
@@ -938,6 +949,7 @@
           <EntitySetMapping Name="ThreadReplies">
             <EntityTypeMapping TypeName="ForumAppModel.ThreadReply">
               <MappingFragment StoreEntitySet="ThreadReply">
+                <ScalarProperty Name="IsPosted" ColumnName="IsPosted" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ThreadID" ColumnName="ThreadID" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
