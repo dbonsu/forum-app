@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="CustomModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticConfig\ForumSubscriptionTypes.cs" />
+    <Compile Include="StaticConfig\UserRoles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

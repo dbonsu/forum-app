@@ -10,7 +10,7 @@ namespace ForumApp.Services.Interfaces
     /// <summary>
     /// Interface for handling IM
     /// </summary>
-    public interface IIMServices
+    public interface IIMService
     {
         /// <summary>
         /// Creates a new IM

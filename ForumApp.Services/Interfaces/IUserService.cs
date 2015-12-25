@@ -49,6 +49,13 @@ namespace ForumApp.Services.Interfaces
         UserEntity GetUserByID(long userID);
 
         /// <summary>
+        /// Gets a user profile from db
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        ProfileEntity GetUserProfileByUserID(long userID);
+
+        /// <summary>
         /// Updates a user
         /// </summary>
         /// <param name="user"></param>

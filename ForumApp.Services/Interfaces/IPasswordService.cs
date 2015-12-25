@@ -10,13 +10,6 @@ namespace ForumApp.Services.Interfaces
     public interface IPasswordService
     {
         /// <summary>
-        /// Creates a new password
-        /// </summary>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        long CreatePassword(PasswordEntity password);
-
-        /// <summary>
         /// Retrieves all passwords for a user
         /// </summary>
         /// <param name="userID"></param>
