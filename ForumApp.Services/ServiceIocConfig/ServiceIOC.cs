@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApp.Services.IocConfig
+namespace ForumApp.Services.ServiceIocConfig
 {
     public class ServiceIOC : CustomModule
     {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApp.DataModel.IocConfig
+namespace ForumApp.DataModel.DataModelIocConfig
 {
     public class ForumDataIOC : CustomModule
     {
