@@ -1,0 +1,219 @@
+﻿
+/****** Object:  Database [ForumSampleSample]     ******/
+
+DROP DATABASE [ForumSample]
+GO
+
+/****** Object:  Database [ForumSampleSample]     ******/
+CREATE DATABASE [ForumSample]
+ 
+
+ALTER DATABASE [ForumSample] SET COMPATIBILITY_LEVEL = 120
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [ForumSample].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+ALTER DATABASE [ForumSample] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [ForumSample] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [ForumSample] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [ForumSample] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [ForumSample] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET RECOVERY SIMPLE 
+GO
+
+ALTER DATABASE [ForumSample] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [ForumSample] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [ForumSample] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [ForumSample] SET FILESTREAM( NON_TRANSACTED_ACCESS = FULL ) 
+GO
+
+ALTER DATABASE [ForumSample] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+
+ALTER DATABASE [ForumSample] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [ForumSample] SET  READ_WRITE 
+GO
+
+--create tables
+--forum
+CREATE TABLE [dbo].[Forum](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[Title] [nvarchar](50) NOT NULL,
+	[Description] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK__Forum__3214EC27086C0736] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--threads
+CREATE TABLE [dbo].[ForumThread](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[TopicID] [bigint] NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[Body] [ntext] NOT NULL,
+	[CreatedOn] [datetime] NOT NULL,
+	[Visible] [bit] NULL,
+	[IsPosted] [bit] NULL,
+ CONSTRAINT [PK__ForumThr__3214EC27D2D75217] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+--instant messages
+CREATE TABLE [dbo].[InstantMessage](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Body] [ntext] NOT NULL,
+	[CreationDate] [datetime] NOT NULL,
+	[ToUser] [bigint] NOT NULL,
+	[FromUser] [bigint] NOT NULL,
+	[IsNew] [bit] NULL,
+	[IsSent] [bit] NULL,
+	[ParentID] [bigint] NULL,
+ CONSTRAINT [PK__InstantM__3214EC279832295D] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+--login attempts
+CREATE TABLE [dbo].[LoginAttempt](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[LoginDate] [datetime] NOT NULL,
+	[UserID] [bigint] NULL,
+ CONSTRAINT [PK_LoginAttempt] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+--alter tables
+--forum
+ALTER TABLE [dbo].[Forum]  WITH CHECK ADD  CONSTRAINT [FK_Forum_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[Forum] CHECK CONSTRAINT [FK_Forum_User]
+GO
+--threads
+ALTER TABLE [dbo].[ForumThread] ADD  CONSTRAINT [DF__ForumThre__Visib__6754599E]  DEFAULT ((1)) FOR [Visible]
+GO
+
+ALTER TABLE [dbo].[ForumThread]  WITH CHECK ADD  CONSTRAINT [FK_ForumThread_Topic] FOREIGN KEY([TopicID])
+REFERENCES [dbo].[Topic] ([ID])
+GO
+
+ALTER TABLE [dbo].[ForumThread] CHECK CONSTRAINT [FK_ForumThread_Topic]
+GO
+
+ALTER TABLE [dbo].[ForumThread]  WITH CHECK ADD  CONSTRAINT [FK_ForumThread_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[ForumThread] CHECK CONSTRAINT [FK_ForumThread_User]
+GO
+--instant messages
+ALTER TABLE [dbo].[InstantMessage]  WITH CHECK ADD  CONSTRAINT [FK_InstantMessage_FromUser] FOREIGN KEY([FromUser])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[InstantMessage] CHECK CONSTRAINT [FK_InstantMessage_FromUser]
+GO
+
+ALTER TABLE [dbo].[InstantMessage]  WITH CHECK ADD  CONSTRAINT [FK_InstantMessage_ToUser] FOREIGN KEY([ToUser])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[InstantMessage] CHECK CONSTRAINT [FK_InstantMessage_ToUser]
+GO
+
+--login attempt
+ALTER TABLE [dbo].[LoginAttempt]  WITH CHECK ADD  CONSTRAINT [FK_LoginAttempt_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[LoginAttempt] CHECK CONSTRAINT [FK_LoginAttempt_User]
+GO

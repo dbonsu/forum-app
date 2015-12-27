@@ -170,6 +170,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutofacConfig\AutofacConfiguration.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,9 +230,21 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForumApp.BusinessEntities\ForumApp.BusinessEntities.csproj">
+      <Project>{635e1d50-9fa9-4ae1-95fe-44131194d355}</Project>
+      <Name>ForumApp.BusinessEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ForumApp.Common\ForumApp.Common.csproj">
       <Project>{899a500a-d7d8-4963-b2ce-78513c5e03e4}</Project>
       <Name>ForumApp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApp.DataModel\ForumApp.DataModel.csproj">
+      <Project>{91bbe904-f187-4ff3-bc22-3b54802a341c}</Project>
+      <Name>ForumApp.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApp.Services\ForumApp.Services.csproj">
+      <Project>{aab1eefe-daa7-4b62-94a5-e3a8fb5906a7}</Project>
+      <Name>ForumApp.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

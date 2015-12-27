@@ -11,6 +11,15 @@ namespace ForumApp
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        public static void AutoMapperConfiguration()
+        {
+            WebAutoMapping.WebMapperConfig.Configure();
+            Services.ServiceAutoMapping.ServiceMapperConfig.Configure();
+            DataModel.DataModelAutoMapping.DataModelMapperConfig.Configure();
+            Common.CommonAutoMapping.CommonMapperConfig.Configure();
+            BusinessEntities.BusinessAutoMapping.BusinessMapperConfig.Configure();
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -18,6 +27,7 @@ namespace ForumApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfiguration();
         }
     }
 }
