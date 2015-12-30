@@ -60,39 +60,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModelAutoMapping\DataModelMapperConfig.cs" />
+    <Compile Include="DataModelIocConfig\ForumDataIOC.cs" />
     <Compile Include="Forum.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ForumAppModels.Context.cs">
+    <Compile Include="ForumAppModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ForumAppModels.Context.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ForumAppModels.cs">
+    <Compile Include="ForumAppModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ForumAppModels.Designer.cs">
+    <Compile Include="ForumAppModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ForumAppModels.edmx</DependentUpon>
+      <DependentUpon>ForumAppModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="ForumThread.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="InstantMessage.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModelIocConfig\ForumDataIOC.cs" />
     <Compile Include="LoginAttempt.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Password.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -102,29 +102,32 @@
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ThreadReply.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Topic.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserSubscription.cs">
-      <DependentUpon>ForumAppModels.tt</DependentUpon>
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="ForumAppModels.edmx">
+    <EntityDeploy Include="ForumAppModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ForumAppModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>ForumAppModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ForumAppModels.edmx.diagram">
-      <DependentUpon>ForumAppModels.edmx</DependentUpon>
+    <None Include="ForumAppModel.edmx.diagram">
+      <DependentUpon>ForumAppModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -138,18 +141,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ForumAppModels.Context.tt">
+    <Content Include="ForumAppModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ForumAppModels.edmx</DependentUpon>
-      <LastGenOutput>ForumAppModels.Context.cs</LastGenOutput>
+      <DependentUpon>ForumAppModel.edmx</DependentUpon>
+      <LastGenOutput>ForumAppModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ForumAppModels.tt">
+    <Content Include="ForumAppModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ForumAppModels.edmx</DependentUpon>
-      <LastGenOutput>ForumAppModels.cs</LastGenOutput>
+      <DependentUpon>ForumAppModel.edmx</DependentUpon>
+      <LastGenOutput>ForumAppModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
