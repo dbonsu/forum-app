@@ -49,10 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonAutoMapping\CommonMapperConfig.cs" />
+    <Compile Include="CommonIocConfig\CommonIOC.cs" />
     <Compile Include="CustomModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticConfig\ForumSubscriptionTypes.cs" />
     <Compile Include="StaticConfig\UserRoles.cs" />
+    <Compile Include="Utility\IPasswordHash.cs" />
+    <Compile Include="Utility\PasswordHash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

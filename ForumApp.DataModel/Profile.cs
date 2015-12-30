@@ -22,7 +22,7 @@ namespace ForumApp.DataModel
         public string Interests { get; set; }
         public int PostCount { get; set; }
         public string Location { get; set; }
-        public byte[] Avatar { get; set; }
+        public string AvatarName { get; set; }
     
         public virtual User User { get; set; }
     }

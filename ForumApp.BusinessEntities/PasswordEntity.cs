@@ -12,7 +12,7 @@ namespace ForumApp.BusinessEntities
         public string Hash { get; set; }
         public long ID { get; set; }
         public bool IsActive { get; set; }
-        public string Salt { get; set; }
+
         public virtual UserEntity User { get; set; }
         public long UserID { get; set; }
     }

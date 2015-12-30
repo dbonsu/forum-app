@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ForumAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ForumAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Forum">
           <Key>
             <PropertyRef Name="ID" />
@@ -55,7 +55,6 @@
           <Property Name="UserID" Type="bigint" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="Hash" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Salt" Type="nchar" MaxLength="128" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Profile">
@@ -70,7 +69,7 @@
           <Property Name="Interests" Type="nchar" MaxLength="255" />
           <Property Name="PostCount" Type="int" Nullable="false" />
           <Property Name="Location" Type="nchar" MaxLength="50" />
-          <Property Name="Avatar" Type="varbinary" MaxLength="8000" />
+          <Property Name="AvatarName" Type="nchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -329,8 +328,7 @@
             <End Role="UserSubscription" EntitySet="UserSubscription" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ForumAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -392,7 +390,6 @@
           <Property Name="UserID" Type="Int64" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Hash" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Salt" Type="String" MaxLength="128" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Password_User" FromRole="Password" ToRole="User" />
         </EntityType>
@@ -408,8 +405,8 @@
           <Property Name="Interests" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
           <Property Name="PostCount" Type="Int32" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Avatar" Type="Binary" MaxLength="8000" FixedLength="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserProfile_User" FromRole="Profile" ToRole="User" />
+          <Property Name="AvatarName" Type="String" MaxLength="128" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -741,7 +738,6 @@
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Hash" ColumnName="Hash" />
-                <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -749,6 +745,7 @@
           <EntitySetMapping Name="Profiles">
             <EntityTypeMapping TypeName="ForumAppModel.Profile">
               <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="AvatarName" ColumnName="AvatarName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -757,7 +754,6 @@
                 <ScalarProperty Name="Interests" ColumnName="Interests" />
                 <ScalarProperty Name="PostCount" ColumnName="PostCount" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,110 +1,26 @@
 ﻿
-/****** Object:  Database [ForumSampleSample]     ******/
 
-DROP DATABASE [ForumSample]
-GO
-
-/****** Object:  Database [ForumSampleSample]     ******/
-CREATE DATABASE [ForumSample]
+/****** Object:  Database [ForumSample]     ******/
+CREATE DATABASE [Forum]
  
 
-ALTER DATABASE [ForumSample] SET COMPATIBILITY_LEVEL = 120
+ALTER DATABASE [Forum] SET COMPATIBILITY_LEVEL = 120
 GO
 
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
-EXEC [ForumSample].[dbo].[sp_fulltext_database] @action = 'enable'
+EXEC [Forum].[dbo].[sp_fulltext_database] @action = 'enable'
 end
 GO
 
-ALTER DATABASE [ForumSample] SET ANSI_NULL_DEFAULT OFF 
+
+
+
+
+ALTER DATABASE [Forum] SET FILESTREAM( NON_TRANSACTED_ACCESS = FULL ) 
 GO
 
-ALTER DATABASE [ForumSample] SET ANSI_NULLS OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET ANSI_PADDING OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET ANSI_WARNINGS OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET ARITHABORT OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET AUTO_CLOSE OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET AUTO_SHRINK OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET AUTO_UPDATE_STATISTICS ON 
-GO
-
-ALTER DATABASE [ForumSample] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET CURSOR_DEFAULT  GLOBAL 
-GO
-
-ALTER DATABASE [ForumSample] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET NUMERIC_ROUNDABORT OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET QUOTED_IDENTIFIER OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET RECURSIVE_TRIGGERS OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET  DISABLE_BROKER 
-GO
-
-ALTER DATABASE [ForumSample] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET TRUSTWORTHY OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET PARAMETERIZATION SIMPLE 
-GO
-
-ALTER DATABASE [ForumSample] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET HONOR_BROKER_PRIORITY OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET RECOVERY SIMPLE 
-GO
-
-ALTER DATABASE [ForumSample] SET  MULTI_USER 
-GO
-
-ALTER DATABASE [ForumSample] SET PAGE_VERIFY CHECKSUM  
-GO
-
-ALTER DATABASE [ForumSample] SET DB_CHAINING OFF 
-GO
-
-ALTER DATABASE [ForumSample] SET FILESTREAM( NON_TRANSACTED_ACCESS = FULL ) 
-GO
-
-ALTER DATABASE [ForumSample] SET TARGET_RECOVERY_TIME = 0 SECONDS 
-GO
-
-ALTER DATABASE [ForumSample] SET DELAYED_DURABILITY = DISABLED 
-GO
-
-ALTER DATABASE [ForumSample] SET  READ_WRITE 
+ALTER DATABASE [Forum] SET  READ_WRITE 
 GO
 
 --create tables
@@ -169,6 +85,117 @@ CREATE TABLE [dbo].[LoginAttempt](
 
 GO
 
+--password
+CREATE TABLE [dbo].[Password](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[Hash] [nvarchar](128) NOT NULL,
+	[IsActive] [bit] NOT NULL,
+ CONSTRAINT [PK_Password] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+--profile
+CREATE TABLE [dbo].[Profile](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[Email] [nchar](50) NOT NULL,
+	[FirstName] [nchar](50) NOT NULL,
+	[LastName] [nchar](50) NOT NULL,
+	[Interests] [nchar](255) NULL,
+	[PostCount] [int] NOT NULL,
+	[Location] [nchar](50) NULL,
+	[AvatarName] [nchar](128) NULL,
+ CONSTRAINT [PK_Profile] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--role
+CREATE TABLE [dbo].[Role](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[RoleName] [nchar](25) NULL,
+ CONSTRAINT [PK_Role] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--thread reply
+CREATE TABLE [dbo].[ThreadReply](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ForumThreadID] [bigint] NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[Body] [ntext] NOT NULL,
+	[CreatedOn] [datetime] NOT NULL,
+	[IsPosted] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+--topic
+CREATE TABLE [dbo].[Topic](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ForumID] [bigint] NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[Subject] [nvarchar](255) NOT NULL,
+	[Visible] [bit] NOT NULL,
+	[IsSticky] [int] NOT NULL,
+	[IsClosed] [bit] NOT NULL,
+	[ViewsCount] [int] NOT NULL,
+	[RepliesCount] [int] NOT NULL,
+	[CreatedOn] [datetime] NOT NULL,
+ CONSTRAINT [PK__Topics__3214EC2757F16623] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--user
+CREATE TABLE [dbo].[User](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Username] [nchar](10) NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[RoleID] [bigint] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+--user subscriptions
+CREATE TABLE [dbo].[UserSubscription](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[SubscriptionID] [bigint] NOT NULL,
+	[SubscriptionType] [nchar](25) NOT NULL,
+ CONSTRAINT [PK_UserSubscription] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
 
 --alter tables
 --forum
@@ -216,4 +243,62 @@ REFERENCES [dbo].[User] ([ID])
 GO
 
 ALTER TABLE [dbo].[LoginAttempt] CHECK CONSTRAINT [FK_LoginAttempt_User]
+GO
+--password
+ALTER TABLE [dbo].[Password]  WITH CHECK ADD  CONSTRAINT [FK_Password_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[Password] CHECK CONSTRAINT [FK_Password_User]
+GO
+--profile
+ALTER TABLE [dbo].[Profile]  WITH CHECK ADD  CONSTRAINT [FK_UserProfile_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[Profile] CHECK CONSTRAINT [FK_UserProfile_User]
+GO
+
+--thread reply
+ALTER TABLE [dbo].[ThreadReply]  WITH CHECK ADD  CONSTRAINT [FK_ThreadReply_Thread] FOREIGN KEY([ForumThreadID])
+REFERENCES [dbo].[ForumThread] ([ID])
+GO
+
+ALTER TABLE [dbo].[ThreadReply] CHECK CONSTRAINT [FK_ThreadReply_Thread]
+GO
+
+--topic
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__IsSticky__5070F446]  DEFAULT ((0)) FOR [IsSticky]
+GO
+
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__IsClosed__5165187F]  DEFAULT ((0)) FOR [IsClosed]
+GO
+
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__ViewsCou__52593CB8]  DEFAULT ((0)) FOR [ViewsCount]
+GO
+
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__RepliesC__534D60F1]  DEFAULT ((0)) FOR [RepliesCount]
+GO
+
+ALTER TABLE [dbo].[Topic]  WITH CHECK ADD  CONSTRAINT [FK_Topics_Forum] FOREIGN KEY([ForumID])
+REFERENCES [dbo].[Forum] ([ID])
+GO
+
+ALTER TABLE [dbo].[Topic] CHECK CONSTRAINT [FK_Topics_Forum]
+GO
+
+--user
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Role] FOREIGN KEY([RoleID])
+REFERENCES [dbo].[Role] ([ID])
+GO
+
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Role]
+GO
+
+--user subscriptions
+ALTER TABLE [dbo].[UserSubscription]  WITH CHECK ADD  CONSTRAINT [FK_UserSubscription_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
+GO
+
+ALTER TABLE [dbo].[UserSubscription] CHECK CONSTRAINT [FK_UserSubscription_User]
 GO

@@ -24,6 +24,20 @@ namespace ForumApp.Services.Interfaces
         IEnumerable<PasswordEntity> GetExpiredPasswords(long userID);
 
         /// <summary>
+        /// Gets only the hash in the password db by user id
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
+        string GetHash(long UserID);
+
+        /// <summary>
+        /// Gets only the hash in the password db by username
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        string GetHash(string userName);
+
+        /// <summary>
         /// Retrieves a password
         /// </summary>
         /// <param name="userID"></param>

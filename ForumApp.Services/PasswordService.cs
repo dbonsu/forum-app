@@ -23,6 +23,16 @@ namespace ForumApp.Services
             throw new NotImplementedException();
         }
 
+        public string GetHash(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetHash(long UserID)
+        {
+            throw new NotImplementedException();
+        }
+
         public PasswordEntity GetPassword(long userID)
         {
             throw new NotImplementedException();

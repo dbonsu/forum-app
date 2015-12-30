@@ -8,7 +8,7 @@ namespace ForumApp.BusinessEntities
 {
     public class ProfileEntity
     {
-        public byte[] Avatar { get; set; }
+        public string AvatarFileName { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public long ID { get; set; }

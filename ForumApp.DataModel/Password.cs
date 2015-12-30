@@ -18,7 +18,6 @@ namespace ForumApp.DataModel
         public long UserID { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string Hash { get; set; }
-        public string Salt { get; set; }
         public bool IsActive { get; set; }
     
         public virtual User User { get; set; }
