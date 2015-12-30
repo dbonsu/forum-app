@@ -22,5 +22,15 @@ namespace ForumApp.Services
         {
             throw new NotImplementedException();
         }
+
+        public ICollection<UserRoleEntity> GetRoleList(long userID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<RoleEntity> GetUserRoles(long userID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

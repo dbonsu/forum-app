@@ -10,10 +10,10 @@ namespace ForumApp.BusinessEntities
     {
         public string Body { get; set; }
         public System.DateTime CreatedOn { get; set; }
-        public virtual ForumThreadEntity ForumThread { get; set; }
-        public long ForumThreadID { get; set; }
+        public ForumThreadEntity ForumThread { get; set; }
+
         public long ID { get; set; }
         public Nullable<bool> IsPosted { get; set; }
-        public long UserID { get; set; }
+        public UserEntity ReplyUser { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace ForumApp.BusinessEntities
         public string LastName { get; set; }
         public string Location { get; set; }
         public int PostCount { get; set; }
-        public virtual UserEntity User { get; set; }
-        public long UserID { get; set; }
+        public UserEntity User { get; set; }
     }
 }

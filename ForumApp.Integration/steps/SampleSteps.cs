@@ -1,8 +1,11 @@
 ﻿using ForumApp.Integration.pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using System;
+using OpenQA.Selenium.Remote;
+using System.Configuration;
 using TechTalk.SpecFlow;
 
 namespace ForumApp.Integration.steps
@@ -12,12 +15,23 @@ namespace ForumApp.Integration.steps
     {
         private IWebDriver _driver;
         private GooglePage _page;
+        private DesiredCapabilities cap;
+
+        private IWebDriver driver;
 
         [Given(@"I can have a driver")]
         public void GivenICanHaveADriver()
         {
-            _driver = new FirefoxDriver();
-            _page = new GooglePage(_driver);
+            //location is relative to executing dll in bin/debug
+            var driverPath = ConfigurationManager.AppSettings["driverLocation"];
+            EdgeOptions options = new EdgeOptions();
+            options.PageLoadStrategy = EdgePageLoadStrategy.Eager;
+
+            cap = DesiredCapabilities.Chrome();
+
+            driver = new EdgeDriver(driverPath, options);
+            // _driver = new ChromeDriver(driverPath);
+            _page = new GooglePage(driver);
         }
 
         [Then(@"the web page is displayed")]
