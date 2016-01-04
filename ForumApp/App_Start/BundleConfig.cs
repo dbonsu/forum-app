@@ -21,8 +21,9 @@ namespace ForumApp
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/vendor/bootstrap.css",
+                      "~/Content/forum/Site.css",
+                      "~/Content/forum/Sample.css"));
         }
     }
 }

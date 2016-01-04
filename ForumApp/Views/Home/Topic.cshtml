@@ -1,0 +1,38 @@
+﻿@model ForumApp.Models.IndexVM.TopicVM
+@{
+    ViewBag.Title = "Topic";
+}
+
+<h2>@Model.Title</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-12">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <td>Threads</td>
+                        <td>Latest Posts</td>
+                        <td>Replies</td>
+                    </tr>
+                </thead>
+                @foreach (var thread in @Model.Threads)
+                {
+                    <tbody>
+                        <tr>
+
+                            <td> @Html.ActionLink((string)@thread.Title, "Thread", "Home", new { @topicID = @Model.TopicID, @threadID = @thread.ThreadID }, null)</td>
+
+                            <td>
+                                <span id="postUser">@thread.LatestPost.User.UserName</span><span id="postDate">@thread.LatestPost.PostDate</span><br />
+                                <a href="#"><span id="postTitle">@thread.LatestPost.Subject</span></a>
+                            </td>
+                            <td>
+                                @thread.NumOfPosts
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

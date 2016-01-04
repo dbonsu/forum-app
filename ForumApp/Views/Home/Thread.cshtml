@@ -1,0 +1,57 @@
+﻿@model ForumApp.Models.IndexVM.ThreadVM
+
+@{
+    ViewBag.Title = "Thread";
+}
+
+< post reply link>
+<div>
+    <h2>@Model.Title</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+        <div>
+            @Model.User.UserName
+        </div>
+        <div>
+            Avatar here
+        </div>
+        <div>
+            <span>Join Date: </span> <span>@Model.User.JoinDate </span><br />
+            <span>Location: </span> <span>@Model.User.Location </span><br />
+            <span>Number of Posts: </span> <span>@Model.User.NumOfPosts</span>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-8">
+        <div>
+            @Model.PostDate
+        </div>
+        <div>@Model.Body</div>
+    </div>
+</div>
+
+@foreach (var reply in Model.ThreadReplies)
+{
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div>
+                @reply.User.UserName
+            </div>
+            <div>
+                Avatar here
+            </div>
+            <div>
+                <span>Join Date: </span> <span>@reply.User.JoinDate </span><br />
+                <span>Location: </span> <span>@reply.User.Location </span><br />
+                <span>Number of Posts: </span> <span>@reply.User.NumOfPosts</span>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <div>
+                @reply.PostDate
+            </div>
+            <div>@reply.Body</div>
+        </div>
+    </div>
+}

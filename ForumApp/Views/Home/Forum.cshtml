@@ -1,0 +1,55 @@
+﻿@model ForumApp.Models.IndexVM.ForumIndexVM
+@{
+    ViewBag.Title = "Forum";
+}
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+
+        <h1>@Model.Title</h1>
+        <p>Welcome to the best forum in the world.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Topics
+                    </th>
+
+                    <th>
+                        Posts
+                    </th>
+                    <th>
+                        Lastest Post
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var topic in @Model.Topics)
+            {
+
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.ActionLink((string)topic.Title, "Topic", "Home", new { @forumID = @Model.ID, @topicID = @topic.TopicID }, null) <br /> <span> &nbsp; @topic.Description</span>
+                        </td>
+                        <td>
+                            @topic.Threads.Count()
+                        </td>
+
+                        <td>
+                            <span id="postUser">@topic.LatestPost.User.UserName</span><span id="postDate">@topic.LatestPost.PostDate</span><br />
+                            <a href="#"><span id="postTitle">@topic.LatestPost.Subject</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        use space for pagination .... < previous    next>
+    </div>
+</div>
