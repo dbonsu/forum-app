@@ -172,6 +172,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutofacConfig\AutofacConfiguration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -189,11 +190,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\forum\Sample.css">
-      <DependentUpon>Sample.scss</DependentUpon>
+    <Content Include="Content\forum\Forum.css">
+      <DependentUpon>Forum.scss</DependentUpon>
     </Content>
-    <Content Include="Content\forum\Sample.min.css">
-      <DependentUpon>Sample.css</DependentUpon>
+    <Content Include="Content\forum\Forum.min.css">
+      <DependentUpon>Forum.css</DependentUpon>
     </Content>
     <Content Include="Content\vendor\bootstrap-theme.css" />
     <Content Include="Content\vendor\bootstrap-theme.min.css" />
@@ -229,7 +230,7 @@
     <Content Include="Content\vendor\bootstrap.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.min.css.map" />
     <Content Include="Content\vendor\bootstrap-theme.css.map" />
-    <Content Include="Content\forum\Sample.scss" />
+    <Content Include="Content\forum\Forum.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -264,6 +265,7 @@
     <Content Include="Views\Home\Forum.cshtml" />
     <Content Include="Views\Home\Topic.cshtml" />
     <Content Include="Views\Home\Thread.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ForumApp.BusinessEntities\ForumApp.BusinessEntities.csproj">

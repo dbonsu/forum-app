@@ -23,7 +23,7 @@ namespace ForumApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/vendor/bootstrap.css",
                       "~/Content/forum/Site.css",
-                      "~/Content/forum/Sample.css"));
+                      "~/Content/forum/Forum.css"));
         }
     }
 }
