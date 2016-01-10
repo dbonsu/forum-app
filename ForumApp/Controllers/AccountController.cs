@@ -1,17 +1,42 @@
-﻿using System;
+﻿using ForumApp.Models.ObjectVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace ForumApp.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : ApiController
     {
-        // GET: Account
-        public ActionResult Login()
+        [HttpPost]
+        [Route("api/Account/Login")]
+        public HttpResponseMessage Login([FromBody]LoginVM model)
         {
-            return View();
+            if (!ModelState.IsValid || model == null)
+            {
+                return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "User name and or password is incorrect");
+            }
+            if (model.UserName != null)
+            {
+                //check username in in db by calling validate or some other method
+                //todo
+                if (!A(model))
+                {
+                    return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "User name and or password is incorrect");
+                }
+            }
+            //provide token
+
+            return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
+        }
+
+        private bool A(LoginVM loginVM)
+        {
+            var username = "derick";
+            return loginVM.UserName == username;
         }
     }
 }

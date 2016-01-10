@@ -1,10 +1,10 @@
 ﻿[
   {
-    "outputFile": "Content/forum/Sample.css",
-    "inputFile": "Content/forum/Sample.scss"
-  },
-  {
     "outputFile": "Content/forum/Forum.css",
     "inputFile": "Content/forum/Forum.scss"
+  },
+  {
+    "outputFile": "Content/forum/Login.css",
+    "inputFile": "Content/forum/Login.scss"
   }
 ]
