@@ -9,9 +9,8 @@
 
 namespace ForumApp.DataModel
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class Topic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

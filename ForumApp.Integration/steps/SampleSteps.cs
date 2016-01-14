@@ -1,9 +1,7 @@
 ﻿using ForumApp.Integration.pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using System.Configuration;
 using TechTalk.SpecFlow;

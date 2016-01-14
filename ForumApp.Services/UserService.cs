@@ -1,25 +1,22 @@
 ﻿using ForumApp.BusinessEntities;
 using ForumApp.DataModel;
-using ForumApp.DataModel.Repository.Interfaces;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
     /// <summary>
     /// IUserService concrete class
     /// </summary>
-    public class UserService : IUserService
+    public class UserService : IBaseService, IUserService
     {
-        private IUnitOfWork _unitOfWork;
+        private ForumAppEntities _context;
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(ForumAppEntities context)
         {
-            _unitOfWork = unitOfWork;
+            _context = new ForumAppEntities();
         }
 
         public long CreateUser(UserEntity user)
@@ -39,7 +36,7 @@ namespace ForumApp.Services
 
         public IEnumerable<UserEntity> GetAllUsers()
         {
-            IEnumerable<User> users = _unitOfWork.UserRepository.GetAll();
+            IEnumerable<User> users = _context.Users.AsEnumerable<User>();
             IEnumerable<UserEntity> userEntities = AutoMapper.Mapper.Map<IEnumerable<UserEntity>>(users);
             return userEntities;
         }
@@ -49,7 +46,7 @@ namespace ForumApp.Services
             User user = null;
             if (userID != 0)
             {
-                user = _unitOfWork.UserRepository.Get(u => u.ID == userID);
+                user = _context.Users.Where(u => u.ID == userID).FirstOrDefault<User>();
             }
 
             UserEntity userEnitity = AutoMapper.Mapper.Map<UserEntity>(user);
@@ -61,7 +58,7 @@ namespace ForumApp.Services
             User user = null;
             if (username != null)
             {
-                user = _unitOfWork.UserRepository.Get(u => u.Username == "derick");
+                user = _context.Users.Where(u => u.Username == "derick").FirstOrDefault<User>();
             }
 
             UserEntity userEnitity = AutoMapper.Mapper.Map<UserEntity>(user);
@@ -77,5 +74,42 @@ namespace ForumApp.Services
         {
             throw new NotImplementedException();
         }
+
+        #region IDisposable Support
+
+        private bool disposedValue = false; // To detect redundant calls
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~UserService() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        #endregion IDisposable Support
     }
 }
