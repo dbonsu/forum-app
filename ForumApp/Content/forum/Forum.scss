@@ -1,0 +1,46 @@
+﻿$forum-font: Helvetica, sans-serif;
+$forum-font-size: 15px;
+$forum-main-color: #3F42AA;
+$forum-margin: 10px;
+
+@mixin footerAndHeader($font-size, $padding: 5px) {
+    font: $forum-font;
+    font-size: $font-size;
+    background-color: $forum-main-color;
+    color: white;
+    padding: $padding;
+}
+
+.error-message {
+    color: black;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.forum-header {
+    @include footerAndHeader(20px);
+    margin-bottom: $forum-margin;
+}
+
+.forum-footer {
+    @include footerAndHeader(14px);
+}
+
+#header-links {
+    position: relative;
+    left: 20%;
+}
+
+#loginBtn {
+    margin-top: $forum-margin;
+    font-size: $forum-font-size;
+}
+
+.modal-header-background {
+    background-color: $forum-main-color;
+    color: white;
+}
+
+#modal-btn-id {
+    font-size: 25px;
+}
