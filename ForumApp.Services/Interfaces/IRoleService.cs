@@ -22,5 +22,19 @@ namespace ForumApp.Services.Interfaces
         /// <param name="userID"></param>
         /// <returns></returns>
         RoleEntity GetRoleByUserID(long userID);
+
+        /// <summary>
+        /// Retrieves the user role entity
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        ICollection<UserRoleEntity> GetRoleList(long userID);
+
+        /// <summary>
+        /// Returns user roles from the userrole entity
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        ICollection<RoleEntity> GetUserRoles(long userID);
     }
 }

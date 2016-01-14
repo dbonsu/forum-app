@@ -14,6 +14,5 @@ namespace ForumApp.BusinessEntities
         public bool IsActive { get; set; }
 
         public virtual UserEntity User { get; set; }
-        public long UserID { get; set; }
     }
 }

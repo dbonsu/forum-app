@@ -1,30 +1,85 @@
-﻿
-
-/****** Object:  Database [ForumSample]     ******/
+﻿USE [master]
+GO
+/****** Object:  Database [Forum]    Script Date: 1/10/2016 11:26:16 AM ******/
 CREATE DATABASE [Forum]
- 
-
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Forum', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\Forum.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'Forum_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\Forum_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
 ALTER DATABASE [Forum] SET COMPATIBILITY_LEVEL = 120
 GO
-
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
 EXEC [Forum].[dbo].[sp_fulltext_database] @action = 'enable'
 end
 GO
-
-
-
-
-
+ALTER DATABASE [Forum] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Forum] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Forum] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Forum] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Forum] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Forum] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Forum] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Forum] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Forum] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Forum] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Forum] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Forum] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Forum] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Forum] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Forum] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Forum] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Forum] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Forum] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Forum] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Forum] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Forum] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Forum] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Forum] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [Forum] SET  MULTI_USER 
+GO
+ALTER DATABASE [Forum] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Forum] SET DB_CHAINING OFF 
+GO
 ALTER DATABASE [Forum] SET FILESTREAM( NON_TRANSACTED_ACCESS = FULL ) 
 GO
-
-ALTER DATABASE [Forum] SET  READ_WRITE 
+ALTER DATABASE [Forum] SET TARGET_RECOVERY_TIME = 0 SECONDS 
 GO
-
---create tables
---forum
+ALTER DATABASE [Forum] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [Forum]
+GO
+/****** Object:  Table [dbo].[Forum]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[Forum](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[UserID] [bigint] NOT NULL,
@@ -37,8 +92,11 @@ CREATE TABLE [dbo].[Forum](
 ) ON [PRIMARY]
 
 GO
-
---threads
+/****** Object:  Table [dbo].[ForumThread]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[ForumThread](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[TopicID] [bigint] NOT NULL,
@@ -54,7 +112,11 @@ CREATE TABLE [dbo].[ForumThread](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
---instant messages
+/****** Object:  Table [dbo].[InstantMessage]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[InstantMessage](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[Body] [ntext] NOT NULL,
@@ -71,8 +133,11 @@ CREATE TABLE [dbo].[InstantMessage](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-
---login attempts
+/****** Object:  Table [dbo].[LoginAttempt]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[LoginAttempt](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[LoginDate] [datetime] NOT NULL,
@@ -84,8 +149,11 @@ CREATE TABLE [dbo].[LoginAttempt](
 ) ON [PRIMARY]
 
 GO
-
---password
+/****** Object:  Table [dbo].[Password]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[Password](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[UserID] [bigint] NOT NULL,
@@ -99,7 +167,11 @@ CREATE TABLE [dbo].[Password](
 ) ON [PRIMARY]
 
 GO
---profile
+/****** Object:  Table [dbo].[Profile]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[Profile](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[UserID] [bigint] NOT NULL,
@@ -117,8 +189,11 @@ CREATE TABLE [dbo].[Profile](
 ) ON [PRIMARY]
 
 GO
-
---role
+/****** Object:  Table [dbo].[Role]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[Role](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[RoleName] [nchar](25) NULL,
@@ -129,8 +204,11 @@ CREATE TABLE [dbo].[Role](
 ) ON [PRIMARY]
 
 GO
-
---thread reply
+/****** Object:  Table [dbo].[ThreadReply]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[ThreadReply](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[ForumThreadID] [bigint] NOT NULL,
@@ -145,8 +223,29 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
+/****** Object:  Table [dbo].[Token]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Token](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserID] [bigint] NOT NULL,
+	[AuthToken] [nchar](255) NOT NULL,
+	[IssuedOn] [datetime] NOT NULL,
+	[ExpiresOn] [datetime] NOT NULL,
+ CONSTRAINT [PK_Token] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
---topic
+GO
+/****** Object:  Table [dbo].[Topic]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[Topic](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[ForumID] [bigint] NOT NULL,
@@ -165,8 +264,11 @@ CREATE TABLE [dbo].[Topic](
 ) ON [PRIMARY]
 
 GO
-
---user
+/****** Object:  Table [dbo].[User]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[User](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[Username] [nchar](10) NOT NULL,
@@ -180,9 +282,11 @@ CREATE TABLE [dbo].[User](
 ) ON [PRIMARY]
 
 GO
-
-
---user subscriptions
+/****** Object:  Table [dbo].[UserSubscription]    Script Date: 1/10/2016 11:26:17 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE [dbo].[UserSubscription](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[UserID] [bigint] NOT NULL,
@@ -195,110 +299,82 @@ CREATE TABLE [dbo].[UserSubscription](
 ) ON [PRIMARY]
 
 GO
-
-
---alter tables
---forum
+ALTER TABLE [dbo].[ForumThread] ADD  CONSTRAINT [DF__ForumThre__Visib__6754599E]  DEFAULT ((1)) FOR [Visible]
+GO
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__IsSticky__5070F446]  DEFAULT ((0)) FOR [IsSticky]
+GO
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__IsClosed__5165187F]  DEFAULT ((0)) FOR [IsClosed]
+GO
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__ViewsCou__52593CB8]  DEFAULT ((0)) FOR [ViewsCount]
+GO
+ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__RepliesC__534D60F1]  DEFAULT ((0)) FOR [RepliesCount]
+GO
 ALTER TABLE [dbo].[Forum]  WITH CHECK ADD  CONSTRAINT [FK_Forum_User] FOREIGN KEY([UserID])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[Forum] CHECK CONSTRAINT [FK_Forum_User]
 GO
---threads
-ALTER TABLE [dbo].[ForumThread] ADD  CONSTRAINT [DF__ForumThre__Visib__6754599E]  DEFAULT ((1)) FOR [Visible]
-GO
-
 ALTER TABLE [dbo].[ForumThread]  WITH CHECK ADD  CONSTRAINT [FK_ForumThread_Topic] FOREIGN KEY([TopicID])
 REFERENCES [dbo].[Topic] ([ID])
 GO
-
 ALTER TABLE [dbo].[ForumThread] CHECK CONSTRAINT [FK_ForumThread_Topic]
 GO
-
 ALTER TABLE [dbo].[ForumThread]  WITH CHECK ADD  CONSTRAINT [FK_ForumThread_User] FOREIGN KEY([UserID])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[ForumThread] CHECK CONSTRAINT [FK_ForumThread_User]
 GO
---instant messages
 ALTER TABLE [dbo].[InstantMessage]  WITH CHECK ADD  CONSTRAINT [FK_InstantMessage_FromUser] FOREIGN KEY([FromUser])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[InstantMessage] CHECK CONSTRAINT [FK_InstantMessage_FromUser]
 GO
-
 ALTER TABLE [dbo].[InstantMessage]  WITH CHECK ADD  CONSTRAINT [FK_InstantMessage_ToUser] FOREIGN KEY([ToUser])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[InstantMessage] CHECK CONSTRAINT [FK_InstantMessage_ToUser]
 GO
-
---login attempt
 ALTER TABLE [dbo].[LoginAttempt]  WITH CHECK ADD  CONSTRAINT [FK_LoginAttempt_User] FOREIGN KEY([UserID])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[LoginAttempt] CHECK CONSTRAINT [FK_LoginAttempt_User]
 GO
---password
 ALTER TABLE [dbo].[Password]  WITH CHECK ADD  CONSTRAINT [FK_Password_User] FOREIGN KEY([UserID])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[Password] CHECK CONSTRAINT [FK_Password_User]
 GO
---profile
 ALTER TABLE [dbo].[Profile]  WITH CHECK ADD  CONSTRAINT [FK_UserProfile_User] FOREIGN KEY([UserID])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[Profile] CHECK CONSTRAINT [FK_UserProfile_User]
 GO
-
---thread reply
 ALTER TABLE [dbo].[ThreadReply]  WITH CHECK ADD  CONSTRAINT [FK_ThreadReply_Thread] FOREIGN KEY([ForumThreadID])
 REFERENCES [dbo].[ForumThread] ([ID])
 GO
-
 ALTER TABLE [dbo].[ThreadReply] CHECK CONSTRAINT [FK_ThreadReply_Thread]
 GO
-
---topic
-ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__IsSticky__5070F446]  DEFAULT ((0)) FOR [IsSticky]
+ALTER TABLE [dbo].[Token]  WITH CHECK ADD  CONSTRAINT [FK_Token_User] FOREIGN KEY([UserID])
+REFERENCES [dbo].[User] ([ID])
 GO
-
-ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__IsClosed__5165187F]  DEFAULT ((0)) FOR [IsClosed]
+ALTER TABLE [dbo].[Token] CHECK CONSTRAINT [FK_Token_User]
 GO
-
-ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__ViewsCou__52593CB8]  DEFAULT ((0)) FOR [ViewsCount]
-GO
-
-ALTER TABLE [dbo].[Topic] ADD  CONSTRAINT [DF__Topics__RepliesC__534D60F1]  DEFAULT ((0)) FOR [RepliesCount]
-GO
-
 ALTER TABLE [dbo].[Topic]  WITH CHECK ADD  CONSTRAINT [FK_Topics_Forum] FOREIGN KEY([ForumID])
 REFERENCES [dbo].[Forum] ([ID])
 GO
-
 ALTER TABLE [dbo].[Topic] CHECK CONSTRAINT [FK_Topics_Forum]
 GO
-
---user
 ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Role] FOREIGN KEY([RoleID])
 REFERENCES [dbo].[Role] ([ID])
 GO
-
 ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Role]
 GO
-
---user subscriptions
 ALTER TABLE [dbo].[UserSubscription]  WITH CHECK ADD  CONSTRAINT [FK_UserSubscription_User] FOREIGN KEY([UserID])
 REFERENCES [dbo].[User] ([ID])
 GO
-
 ALTER TABLE [dbo].[UserSubscription] CHECK CONSTRAINT [FK_UserSubscription_User]
+GO
+USE [master]
+GO
+ALTER DATABASE [Forum] SET  READ_WRITE 
 GO

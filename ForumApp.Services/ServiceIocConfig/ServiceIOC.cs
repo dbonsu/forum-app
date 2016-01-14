@@ -22,6 +22,7 @@ namespace ForumApp.Services.ServiceIocConfig
             builder.RegisterType<TopicService>().As<ITopicService>();
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<UserSubscription>().As<IUserSubscriptionService>();
+            builder.RegisterType<LoginService>().As<ILoginService>();
         }
     }
 }

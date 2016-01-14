@@ -8,25 +8,17 @@ namespace ForumApp.BusinessEntities
 {
     public class TopicEntity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TopicEntity()
-        {
-            this.ForumThreads = new HashSet<ForumThreadEntity>();
-        }
-
         public System.DateTime CreatedOn { get; set; }
-        public virtual ForumEntity Forum { get; set; }
-        public long ForumID { get; set; }
+        public ForumEntity Forum { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ForumThreadEntity> ForumThreads { get; set; }
+        public ICollection<ForumThreadEntity> ForumThreads { get; set; }
 
         public long ID { get; set; }
         public bool IsClosed { get; set; }
         public int IsSticky { get; set; }
         public int RepliesCount { get; set; }
         public string Subject { get; set; }
-        public long UserID { get; set; }
+        public UserEntity User { get; set; }
         public int ViewsCount { get; set; }
         public bool Visible { get; set; }
     }

@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleEntity.cs" />
     <Compile Include="ThreadReplyEntity.cs" />
+    <Compile Include="TokenEntity.cs" />
     <Compile Include="TopicEntity.cs" />
     <Compile Include="UserEntity.cs" />
     <Compile Include="UserRoleEntity.cs" />
@@ -61,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumApp.DataModel\ForumApp.DataModel.csproj">
+      <Project>{91bbe904-f187-4ff3-bc22-3b54802a341c}</Project>
+      <Name>ForumApp.DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
