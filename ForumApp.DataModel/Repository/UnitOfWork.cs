@@ -23,16 +23,16 @@ namespace ForumApp.DataModel.Repository
         private GenericRepository<Profile> _profileRepository;
         private GenericRepository<Role> _roleRepository;
         private GenericRepository<ThreadReply> _threadReplyRepository;
+        private GenericRepository<Token> _tokenRepository;
         private GenericRepository<Topic> _topicRepository;
         private GenericRepository<User> _userRepository;
-        private GenericRepository<UserRole> _userRoleRepository;
         private GenericRepository<UserSubscription> _userSubscription;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="context"></param>
-        public UnitOfWork(ForumAppEntities context)
+        public UnitOfWork()
         {
             _context = new ForumAppEntities();
         }
@@ -44,11 +44,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._forumRepository == null)
+                {
+                    this._forumRepository = new GenericRepository<Forum>(_context);
+                }
                 return this._forumRepository;
-            }
-            set
-            {
-                this._forumRepository = new GenericRepository<Forum>(_context);
             }
         }
 
@@ -59,11 +59,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
-                return _forumThreadRepository;
-            }
-            set
-            {
-                this._forumThreadRepository = new GenericRepository<ForumThread>(_context);
+                if (this._forumThreadRepository == null)
+                {
+                    this._forumThreadRepository = new GenericRepository<ForumThread>(_context);
+                }
+                return this._forumThreadRepository;
             }
         }
 
@@ -74,12 +74,12 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
-                return this._instantMessageRepository;
-            }
+                if (this._instantMessageRepository == null)
+                {
+                    this._instantMessageRepository = new GenericRepository<InstantMessage>(_context);
+                }
 
-            set
-            {
-                this._instantMessageRepository = new GenericRepository<InstantMessage>(_context);
+                return this._instantMessageRepository;
             }
         }
 
@@ -90,12 +90,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._loginAttemptRepository == null)
+                {
+                    this._loginAttemptRepository = new GenericRepository<LoginAttempt>(_context);
+                }
                 return this._loginAttemptRepository;
-            }
-
-            set
-            {
-                this._loginAttemptRepository = new GenericRepository<LoginAttempt>(_context);
             }
         }
 
@@ -106,13 +105,17 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._passwordRepository == null)
+                {
+                    this._passwordRepository = new GenericRepository<Password>(_context);
+                }
                 return this._passwordRepository;
             }
 
-            set
-            {
-                this._passwordRepository = new GenericRepository<Password>(_context);
-            }
+            //set
+            //{
+            //    this._passwordRepository = new GenericRepository<Password>(_context);
+            //}
         }
 
         /// <summary>
@@ -122,12 +125,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._profileRepository == null)
+                {
+                    this._profileRepository = new GenericRepository<Profile>(_context);
+                }
                 return this._profileRepository;
-            }
-
-            set
-            {
-                this._profileRepository = new GenericRepository<Profile>(_context);
             }
         }
 
@@ -138,12 +140,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._roleRepository == null)
+                {
+                    this._roleRepository = new GenericRepository<Role>(_context);
+                }
                 return this._roleRepository;
-            }
-
-            set
-            {
-                this._roleRepository = new GenericRepository<Role>(_context);
             }
         }
 
@@ -154,12 +155,23 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._threadReplyRepository == null)
+                {
+                    this._threadReplyRepository = new GenericRepository<ThreadReply>(_context);
+                }
                 return this._threadReplyRepository;
             }
+        }
 
-            set
+        public GenericRepository<Token> TokenRepository
+        {
+            get
             {
-                this._threadReplyRepository = new GenericRepository<ThreadReply>(_context);
+                if (this._tokenRepository == null)
+                {
+                    this._tokenRepository = new GenericRepository<Token>(_context);
+                }
+                return this._tokenRepository;
             }
         }
 
@@ -170,12 +182,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._topicRepository == null)
+                {
+                    this._topicRepository = new GenericRepository<Topic>(_context);
+                }
                 return this._topicRepository;
-            }
-
-            set
-            {
-                this._topicRepository = new GenericRepository<Topic>(_context);
             }
         }
 
@@ -186,25 +197,11 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
+                if (this._userRepository == null)
+                {
+                    this._userRepository = new GenericRepository<User>(_context);
+                }
                 return this._userRepository;
-            }
-
-            set
-            {
-                this._userRepository = new GenericRepository<User>(_context);
-            }
-        }
-
-        public GenericRepository<UserRole> UserRoleRepository
-        {
-            get
-            {
-                return this._userRoleRepository;
-            }
-
-            set
-            {
-                this._userRoleRepository = new GenericRepository<UserRole>(_context);
             }
         }
 
@@ -212,12 +209,12 @@ namespace ForumApp.DataModel.Repository
         {
             get
             {
-                return this._userSubscription;
-            }
+                if (this._userSubscription == null)
+                {
+                    this._userSubscription = new GenericRepository<UserSubscription>(_context);
+                }
 
-            set
-            {
-                this._userSubscription = new GenericRepository<UserSubscription>(_context);
+                return this._userSubscription;
             }
         }
 

@@ -26,10 +26,10 @@ namespace ForumApp.BusinessEntities
 
         public ProfileEntity Profile { get; set; }
 
+        public ICollection<TokenEntity> Tokens { get; set; }
         public string Username { get; set; }
 
         public ICollection<UserRoleEntity> UserRoles { get; set; }
-
         public ICollection<UserSubscriptionEntity> UserSubscriptions { get; set; }
     }
 }

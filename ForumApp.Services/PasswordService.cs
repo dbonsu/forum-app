@@ -1,4 +1,5 @@
 ﻿using ForumApp.BusinessEntities;
+using ForumApp.DataModel.Repository.Interfaces;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,13 @@ namespace ForumApp.Services
     /// </summary>
     public class PasswordService : IPasswordService
     {
+        private IUnitOfWork _unitOfWork;
+
+        public PasswordService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         public IEnumerable<PasswordEntity> GetAllPasswords(long userID)
         {
             throw new NotImplementedException();
@@ -28,9 +36,20 @@ namespace ForumApp.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// return the hashed password for comparison
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
         public string GetHash(long UserID)
         {
-            throw new NotImplementedException();
+            string hash = null;
+            var pass = _unitOfWork.PasswordRepository.Get(p => p.UserID == UserID && p.IsActive);
+            if (pass != null)
+            {
+                hash = pass.Hash;
+            }
+            return hash;
         }
 
         public PasswordEntity GetPassword(long userID)

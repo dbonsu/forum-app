@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ForumApp.Common.Utility;
+using ForumApp.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,11 +11,38 @@ namespace ForumApp.Controllers
 {
     public class DebugController : ApiController
     {
-        [Route("Debug/id")]
-        [HttpGet]
-        public int Debug(int i)
+        private ILoginService _loginService;
+        private IPasswordHash _passwordHash;
+        private IUserService _userService;
+
+        public DebugController(IPasswordHash passwordHash, ILoginService loginService, IUserService userService)
         {
-            return i;
+            _passwordHash = passwordHash;
+            _loginService = loginService;
+            _userService = userService;
+        }
+
+        [Route("api/Debug/Users")]
+        [HttpGet]
+        public bool A()
+        {
+            var users = _userService.GetAllUsers();
+            return true;
+        }
+
+        [Route("api/Debug/TestHash")]
+        [HttpPost]
+        public bool Debug(string username, string password)
+        {
+            var login = _loginService.ValidateUser(username, password);
+            return login;
+        }
+
+        [Route("api/Debug/createhash")]
+        [HttpPost]
+        public string GetHash(string password)
+        {
+            return _passwordHash.CreateHash(password);
         }
 
         [HttpGet]

@@ -49,6 +49,13 @@ namespace ForumApp.Services.Interfaces
         UserEntity GetUserByID(long userID);
 
         /// <summary>
+        /// Gets a user from db by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        UserEntity GetUserByUsername(string username);
+
+        /// <summary>
         /// Gets a user profile from db
         /// </summary>
         /// <param name="userID"></param>

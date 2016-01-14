@@ -8,19 +8,19 @@ namespace ForumApp.DataModel.Repository.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        GenericRepository<Forum> ForumRepository { get; set; }
-        GenericRepository<ForumThread> ForumThreadRepository { get; set; }
+        GenericRepository<Forum> ForumRepository { get; }
+        GenericRepository<ForumThread> ForumThreadRepository { get; }
 
-        GenericRepository<InstantMessage> InstantMessageRepository { get; set; }
-        GenericRepository<LoginAttempt> LoginAttemptRepository { get; set; }
-        GenericRepository<Password> PasswordRepository { get; set; }
-        GenericRepository<Profile> ProfileRepository { get; set; }
-        GenericRepository<Role> RoleRepository { get; set; }
-        GenericRepository<ThreadReply> ThreadReplyRepository { get; set; }
-        GenericRepository<Topic> TopicRepository { get; set; }
-        GenericRepository<User> UserRepository { get; set; }
-        GenericRepository<UserRole> UserRoleRepository { get; set; }
-        GenericRepository<UserSubscription> UserSubscription { get; set; }
+        GenericRepository<InstantMessage> InstantMessageRepository { get; }
+        GenericRepository<LoginAttempt> LoginAttemptRepository { get; }
+        GenericRepository<Password> PasswordRepository { get; }
+        GenericRepository<Profile> ProfileRepository { get; }
+        GenericRepository<Role> RoleRepository { get; }
+        GenericRepository<ThreadReply> ThreadReplyRepository { get; }
+        GenericRepository<Token> TokenRepository { get; }
+        GenericRepository<Topic> TopicRepository { get; }
+        GenericRepository<User> UserRepository { get; }
+        GenericRepository<UserSubscription> UserSubscription { get; }
 
         /// <summary>
         /// Save method.

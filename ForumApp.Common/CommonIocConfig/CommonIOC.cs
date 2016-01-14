@@ -12,7 +12,7 @@ namespace ForumApp.Common.CommonIocConfig
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<PasswordHash>().As<IPasswordHash>().InstancePerLifetimeScope();
+            builder.RegisterType<PasswordHash>().As<IPasswordHash>();
         }
     }
 }

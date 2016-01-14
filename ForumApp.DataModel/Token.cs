@@ -12,13 +12,14 @@ namespace ForumApp.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class UserRole
+    public partial class Token
     {
         public long ID { get; set; }
         public long UserID { get; set; }
-        public long RoleID { get; set; }
+        public string AuthToken { get; set; }
+        public System.DateTime IssuedOn { get; set; }
+        public System.DateTime ExpiresOn { get; set; }
     
-        public virtual Role Role { get; set; }
         public virtual User User { get; set; }
     }
 }

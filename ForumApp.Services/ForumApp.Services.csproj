@@ -54,6 +54,7 @@
     <Compile Include="Interfaces\IForumService.cs" />
     <Compile Include="Interfaces\IIMService.cs" />
     <Compile Include="Interfaces\ILoginAttemptService.cs" />
+    <Compile Include="Interfaces\ILoginService.cs" />
     <Compile Include="Interfaces\IPasswordService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
     <Compile Include="Interfaces\IThreadReplyService.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Interfaces\ITopicService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IUserSubscriptionService.cs" />
+    <Compile Include="LoginService.cs" />
     <Compile Include="ServiceIocConfig\ServiceIOC.cs" />
     <Compile Include="LoginAttemptService.cs" />
     <Compile Include="PasswordService.cs" />

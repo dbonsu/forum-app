@@ -107,13 +107,13 @@
     <Compile Include="ThreadReply.cs">
       <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Token.cs">
+      <DependentUpon>ForumAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Topic.cs">
       <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ForumAppModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserRole.cs">
       <DependentUpon>ForumAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserSubscription.cs">
@@ -121,7 +121,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="ForumAppModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ForumAppModel.Designer.cs</LastGenOutput>
