@@ -1,4 +1,4 @@
-﻿using ForumApp.BusinessEntities;
+﻿using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,17 +10,17 @@ namespace ForumApp.Services
     /// </summary>
     public class ForumService : IForumService
     {
-        public long CreateNewForum(ForumEntity newForum)
+        public long CreateNewForum(Forum newForum)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteForumEntity(long ForumEntityID)
+        public bool DeleteForum(long ForumID)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ForumEntity> GetAllForumEntities()
+        public IEnumerable<Forum> GetAllForumEntities()
         {
             throw new NotImplementedException();
         }
@@ -30,17 +30,17 @@ namespace ForumApp.Services
             throw new NotImplementedException();
         }
 
-        public ForumEntity GetForumByID(long forumID)
+        public Forum GetForumByID(long forumID)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ForumEntity> GetForumEntityByUserID(long userID)
+        public IEnumerable<Forum> GetForumByUserID(long userID)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateForumEntity(long ForumEntityID, ForumEntity forumToUpdate)
+        public bool UpdateForum(long ForumID, Forum forumToUpdate)
         {
             throw new NotImplementedException();
         }

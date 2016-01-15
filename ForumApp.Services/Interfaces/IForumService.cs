@@ -1,4 +1,4 @@
-﻿using ForumApp.BusinessEntities;
+﻿using ForumApp.DataModel;
 using System.Collections.Generic;
 
 namespace ForumApp.Services.Interfaces
@@ -13,20 +13,20 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="newForum"></param>
         /// <returns></returns>
-        long CreateNewForum(ForumEntity newForum);
+        long CreateNewForum(Forum newForum);
 
         /// <summary>
         /// Removes existing forum entity
         /// </summary>
-        /// <param name="ForumEntityID"></param>
+        /// <param name="ForumID"></param>
         /// <returns></returns>
-        bool DeleteForumEntity(long ForumEntityID);
+        bool DeleteForum(long ForumID);
 
         /// <summary>
         /// Retrieves all forum entities
         /// </summary>
         /// <returns></returns>
-        IEnumerable<ForumEntity> GetAllForumEntities();
+        IEnumerable<Forum> GetAllForumEntities();
 
         /// <summary>
         /// Retrieves all topics for a forum
@@ -36,25 +36,25 @@ namespace ForumApp.Services.Interfaces
         IEnumerable<TopicEntity> GetAllTopicsByForumId(long forumID);
 
         /// <summary>
-        /// Returns a ForumEntity
+        /// Returns a Forum
         /// </summary>
         /// <param name="forumID"></param>
         /// <returns></returns>
-        ForumEntity GetForumByID(long forumID);
+        Forum GetForumByID(long forumID);
 
         /// <summary>
         /// Retrieve forum for user
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
-        IEnumerable<ForumEntity> GetForumEntityByUserID(long userID);
+        IEnumerable<Forum> GetForumByUserID(long userID);
 
         /// <summary>
         /// Updates an existing forum
         /// </summary>
-        /// <param name="ForumEntityID"></param>
+        /// <param name="ForumID"></param>
         /// <param name="forumToUpdate"></param>
         /// <returns></returns>
-        bool UpdateForumEntity(long ForumEntityID, ForumEntity forumToUpdate);
+        bool UpdateForum(long ForumID, Forum forumToUpdate);
     }
 }

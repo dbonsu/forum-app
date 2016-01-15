@@ -1,11 +1,11 @@
-﻿using ForumApp.BusinessEntities;
+﻿using ForumApp.DataModel;
 using System.Collections.Generic;
 
 namespace ForumApp.Services.Interfaces
 {
     public interface IForumThreadService
     {
-        long CreateForumThread(ForumThreadEntity thread);
+        long CreateForumThread(ForumThread thread);
 
         bool DeleteThread(long threadID);
 
@@ -14,21 +14,21 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="threadID"></param>
         /// <returns></returns>
-        IEnumerable<ThreadReplyEntity> GetAllRepliesByThreadID(long threadID);
+        IEnumerable<ThreadReply> GetAllRepliesByThreadID(long threadID);
 
         /// <summary>
         /// Retrieves all threads for a user
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
-        IEnumerable<ForumThreadEntity> GetAllThreadByUserID(long userID);
+        IEnumerable<ForumThread> GetAllThreadByUserID(long userID);
 
         /// <summary>
         /// Gets a thread
         /// </summary>
         /// <param name="thread"></param>
         /// <returns></returns>
-        ForumThreadEntity GetForumThreadByID(long thread);
+        ForumThread GetForumThreadByID(long thread);
 
         /// <summary>
         /// updates a thread
@@ -36,6 +36,6 @@ namespace ForumApp.Services.Interfaces
         /// <param name="thread"></param>
         /// <param name="threadID"></param>
         /// <returns></returns>
-        bool UpdateForumReply(ForumThreadEntity thread, long threadID);
+        bool UpdateForumReply(ForumThread thread, long threadID);
     }
 }

@@ -1,5 +1,4 @@
-﻿using ForumApp.BusinessEntities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ForumApp.Services.Interfaces
 {

@@ -1,5 +1,4 @@
-﻿using ForumApp.BusinessEntities;
-using ForumApp.Services.Interfaces;
+﻿using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -20,7 +19,7 @@ namespace ForumApp.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ForumThreadEntity> GetAllThreadByTopicID(long topicID)
+        public IEnumerable<ForumThread> GetAllThreadByTopicID(long topicID)
         {
             throw new NotImplementedException();
         }

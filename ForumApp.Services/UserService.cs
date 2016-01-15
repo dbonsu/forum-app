@@ -1,5 +1,4 @@
-﻿using ForumApp.BusinessEntities;
-using ForumApp.DataModel;
+﻿using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
