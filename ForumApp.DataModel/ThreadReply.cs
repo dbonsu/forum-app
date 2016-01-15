@@ -10,7 +10,8 @@
 namespace ForumApp.DataModel
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class ThreadReply
     {
         public long ID { get; set; }

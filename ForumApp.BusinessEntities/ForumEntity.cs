@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ForumApp.BusinessEntities
 {
@@ -10,8 +14,8 @@ namespace ForumApp.BusinessEntities
 
         public string Title { get; set; }
 
-        //public ICollection<TopicEntity> Topics { get; set; }
+        public ICollection<TopicEntity> Topics { get; set; }
 
-        //public virtual UserEntity User { get; set; }
+        public virtual UserEntity User { get; set; }
     }
 }

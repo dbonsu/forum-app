@@ -1,4 +1,10 @@
-﻿namespace ForumApp.Services.Interfaces
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ForumApp.Services.Interfaces
 {
     /// <summary>
     /// Interface for handling login and logout functionalities

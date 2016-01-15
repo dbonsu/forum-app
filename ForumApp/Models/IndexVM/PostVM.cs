@@ -1,4 +1,6 @@
-﻿namespace ForumApp.Models.IndexVM
+﻿using System;
+
+namespace ForumApp.Models.IndexVM
 {
     public class PostVM
     {

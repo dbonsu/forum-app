@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.Web", "ForumApp\Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.DataModel", "ForumApp.DataModel\ForumApp.DataModel.csproj", "{91BBE904-F187-4FF3-BC22-3B54802A341C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.BusinessEntities", "ForumApp.BusinessEntities\ForumApp.BusinessEntities.csproj", "{635E1D50-9FA9-4AE1-95FE-44131194D355}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.Services", "ForumApp.Services\ForumApp.Services.csproj", "{AAB1EEFE-DAA7-4B62-94A5-E3A8FB5906A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApp.Common", "ForumApp.Common\ForumApp.Common.csproj", "{899A500A-D7D8-4963-B2CE-78513C5E03E4}"
@@ -35,6 +37,10 @@ Global
 		{91BBE904-F187-4FF3-BC22-3B54802A341C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91BBE904-F187-4FF3-BC22-3B54802A341C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91BBE904-F187-4FF3-BC22-3B54802A341C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635E1D50-9FA9-4AE1-95FE-44131194D355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635E1D50-9FA9-4AE1-95FE-44131194D355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635E1D50-9FA9-4AE1-95FE-44131194D355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635E1D50-9FA9-4AE1-95FE-44131194D355}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AAB1EEFE-DAA7-4B62-94A5-E3A8FB5906A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AAB1EEFE-DAA7-4B62-94A5-E3A8FB5906A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAB1EEFE-DAA7-4B62-94A5-E3A8FB5906A7}.Release|Any CPU.ActiveCfg = Release|Any CPU

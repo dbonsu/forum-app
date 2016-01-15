@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using ForumApp.BusinessEntities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ForumApp.Services.Interfaces
 {
@@ -26,7 +31,7 @@ namespace ForumApp.Services.Interfaces
         /// </summary>
         /// <param name="topicID"></param>
         /// <returns></returns>
-        IEnumerable<ForumThread> GetAllThreadByTopicID(long topicID);
+        IEnumerable<ForumThreadEntity> GetAllThreadByTopicID(long topicID);
 
         /// <summary>
         /// Retrieves all topics

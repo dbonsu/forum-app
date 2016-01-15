@@ -1,4 +1,9 @@
-﻿namespace ForumApp.Models.IndexVM
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace ForumApp.Models.IndexVM
 {
     public class ForumVM
     {

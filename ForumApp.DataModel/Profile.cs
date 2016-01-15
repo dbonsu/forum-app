@@ -9,7 +9,9 @@
 
 namespace ForumApp.DataModel
 {
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Profile
     {
         public long ID { get; set; }

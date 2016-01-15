@@ -10,7 +10,8 @@
 namespace ForumApp.DataModel
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class LoginAttempt
     {
         public long ID { get; set; }

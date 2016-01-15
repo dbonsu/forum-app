@@ -38,16 +38,7 @@
       <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="ForumService.cs" />
     <Compile Include="ForumThreadService.cs" />
     <Compile Include="IMService.cs" />
-    <Compile Include="Interfaces\IBaseService.cs" />
     <Compile Include="Interfaces\IForumService.cs" />
     <Compile Include="Interfaces\IIMService.cs" />
     <Compile Include="Interfaces\ILoginAttemptService.cs" />
@@ -85,10 +76,13 @@
     <Compile Include="UserSubscription.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForumApp.BusinessEntities\ForumApp.BusinessEntities.csproj">
+      <Project>{635e1d50-9fa9-4ae1-95fe-44131194d355}</Project>
+      <Name>ForumApp.BusinessEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ForumApp.Common\ForumApp.Common.csproj">
       <Project>{899a500a-d7d8-4963-b2ce-78513c5e03e4}</Project>
       <Name>ForumApp.Common</Name>
