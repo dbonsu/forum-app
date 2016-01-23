@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ForumApp
 {
@@ -20,7 +19,8 @@ namespace ForumApp
                       "~/Scripts/vendor/bootstrap.js",
                       "~/Scripts/vendor/respond.js"));
             bundles.Add(new ScriptBundle("~/bundle/forum").Include(
-                    "~/Scripts/forum/Login.js"
+                    "~/Scripts/forum/Login.js",
+                     "~/Scripts/forum/Logout.js"
                     ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

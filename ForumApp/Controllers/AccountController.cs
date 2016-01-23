@@ -1,36 +1,53 @@
-﻿using ForumApp.Models.ObjectVM;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ForumApp.Common.StaticConfig;
+using ForumApp.Common.Utility;
+using ForumApp.Models.ObjectVM;
+using ForumApp.Services.Interfaces;
+using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace ForumApp.Controllers
 {
     public class AccountController : ApiController
     {
+        private ILoginService _loginService;
+        private ITokenUtility _tokenUtility;
+        private IUserService _userService;
+
+        public AccountController(ILoginService loginService, ITokenUtility tokenUtility,
+            IUserService userService)
+        {
+            _loginService = loginService;
+            _tokenUtility = tokenUtility;
+            _userService = userService;
+        }
+
         [HttpPost]
         [Route("api/Account/Login")]
         public HttpResponseMessage Login([FromBody]LoginVM model)
         {
             if (!ModelState.IsValid || model == null)
             {
-                return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "User name and or password is incorrect");
+                return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, AccountErrors.INVALID_USER);
             }
-            if (model.UserName != null)
+            else if (!_loginService.ValidateUser(model.UserName, model.Password))
             {
-                //check username in in db by calling validate or some other method
-                //todo
-                if (!A(model))
-                {
-                    return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, "User name and or password is incorrect");
-                }
+                return Request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest, AccountErrors.INVALID_USER);
             }
-            //provide token
+            else
+            {
+                var simpleUser = _userService.GetSimpleUser(model.UserName);
 
-            return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
+                // generate token
+                var token = _tokenUtility.GenerateToken(simpleUser.Username, simpleUser.RoleName);
+                var response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
+                response.Headers.Add("forum-token", token);
+                response.Headers.Add("Access-Control-Expose-Headers", "forum-token");
+                return response;
+
+                //return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
+            }
         }
 
         private bool A(LoginVM loginVM)

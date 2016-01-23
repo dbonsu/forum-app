@@ -1,10 +1,8 @@
-﻿using ForumApp.DataModel;
+﻿using ForumApp.BusinessEntities;
+using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
@@ -34,6 +32,11 @@ namespace ForumApp.Services
         }
 
         public ForumThread GetForumThreadByID(long thread)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<ThreadReply> IForumThreadService.GetAllRepliesByThreadID(long threadID)
         {
             throw new NotImplementedException();
         }

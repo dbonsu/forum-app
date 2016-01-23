@@ -1,18 +1,23 @@
-﻿using ForumApp.DataModel;
+﻿using ForumApp.BusinessEntities;
+using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
     /// <summary>
     /// IForumService concrete class
     /// </summary>
-    public class ForumService : IForumService
+    public class ForumService : BaseService, IForumService
     {
+        private ForumAppEntities forumAppEntities;
+
+        public ForumService(ForumAppEntities forumAppEntities)
+        {
+            _context = forumAppEntities;
+        }
+
         public long CreateNewForum(Forum newForum)
         {
             throw new NotImplementedException();

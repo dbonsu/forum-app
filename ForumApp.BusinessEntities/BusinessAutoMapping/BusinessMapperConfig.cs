@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
 using ForumApp.DataModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.BusinessEntities.BusinessAutoMapping
 {
@@ -15,6 +10,9 @@ namespace ForumApp.BusinessEntities.BusinessAutoMapping
             //Mappings
             Mapper.CreateMap<Forum, ForumEntity>()
                 .ForMember(dec => dec.User, opt => opt.MapFrom(src => src.User));
+            Mapper.CreateMap<User, SimpleUserDTO>()
+                .ForMember(d => d.UserID, opt => opt.MapFrom(src => src.ID))
+                .ForMember(d => d.RoleName, opt => opt.MapFrom(src => src.Role.RoleName));
         }
     }
 }

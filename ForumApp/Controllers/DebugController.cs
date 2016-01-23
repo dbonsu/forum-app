@@ -1,10 +1,6 @@
 ﻿using ForumApp.Common.Utility;
 using ForumApp.Services.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ForumApp.Controllers
@@ -13,13 +9,16 @@ namespace ForumApp.Controllers
     {
         private ILoginService _loginService;
         private IPasswordHash _passwordHash;
+        private ITokenUtility _tokenUtility;
         private IUserService _userService;
 
-        public DebugController(IPasswordHash passwordHash, ILoginService loginService, IUserService userService)
+        public DebugController(IPasswordHash passwordHash, ILoginService loginService,
+            IUserService userService, ITokenUtility tokenUtility)
         {
             _passwordHash = passwordHash;
             _loginService = loginService;
             _userService = userService;
+            _tokenUtility = tokenUtility;
         }
 
         [Route("api/Debug/Users")]
@@ -34,6 +33,7 @@ namespace ForumApp.Controllers
         [HttpPost]
         public bool Debug(string username, string password)
         {
+            var r = Request.Headers;
             var login = _loginService.ValidateUser(username, password);
             return login;
         }
@@ -54,6 +54,15 @@ namespace ForumApp.Controllers
                 "you",
                 "there"
             };
+        }
+
+        [Route("api/Debug/generateToken")]
+        [HttpGet]
+        public string GetToken(string username, string role)
+        {
+            var token = _tokenUtility.GenerateToken(username, role);
+            _tokenUtility.ValidateToken(token);
+            return token;
         }
 
         [HttpGet]

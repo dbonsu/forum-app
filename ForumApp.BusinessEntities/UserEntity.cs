@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ForumApp.BusinessEntities
 {
+    public class SimpleUserDTO : ValidateUserDTO
+    {
+        public string RoleName { get; set; }
+    }
+
     public class UserEntity
     {
         public System.DateTime CreateDate { get; set; }
@@ -31,5 +32,11 @@ namespace ForumApp.BusinessEntities
 
         public ICollection<UserRoleEntity> UserRoles { get; set; }
         public ICollection<UserSubscriptionEntity> UserSubscriptions { get; set; }
+    }
+
+    public class ValidateUserDTO
+    {
+        public long UserID { get; set; }
+        public string Username { get; set; }
     }
 }

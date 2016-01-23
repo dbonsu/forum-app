@@ -10,8 +10,7 @@
 namespace ForumApp.DataModel
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class InstantMessage
     {
         public long ID { get; set; }

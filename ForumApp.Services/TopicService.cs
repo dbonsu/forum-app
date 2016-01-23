@@ -1,9 +1,8 @@
-﻿using ForumApp.Services.Interfaces;
+﻿using ForumApp.BusinessEntities;
+using ForumApp.DataModel;
+using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
@@ -38,6 +37,11 @@ namespace ForumApp.Services
         }
 
         public IEnumerable<TopicEntity> GetTopicByUserID(long userID)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<ForumThreadEntity> ITopicService.GetAllThreadByTopicID(long topicID)
         {
             throw new NotImplementedException();
         }

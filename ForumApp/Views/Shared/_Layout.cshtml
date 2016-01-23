@@ -18,6 +18,8 @@
                 </button>
                 @Html.ActionLink("Your Forum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <button id="loginBtn" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-loginForm">Log in</button>
+                <button id="logoutBtn" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-logout">Log out</button>
+               
             </div>
             <div>
             </div>
@@ -28,6 +30,7 @@
                     <li>@Html.ActionLink("Forum", "Forum", "Home", new { area = "" }, null)</li>
                 </ul>
             </div>
+
         </div>
     </div>
     <div class="modal fade" id="modal-loginForm">
@@ -46,11 +49,24 @@
                         <div class="form-group">
                             <input id="password" type="password" name="password" class="form-control text-center" placeholder="Password" />
                         </div>
-                        <div class="checkbox">
-                            <label> <input id="rememberme" type="checkbox" name="rememberMe" checked>Remember me</label>
-                        </div>
+
                         <input id="submitBtn" name="submitBtn" type="submit" class="btn btn-primary btn-block" value="Log In" />
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-logout">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-background">
+                    <button id="modal-logout-btn-id" type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center">Log out?</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" id="buttonLogout-cancel" class="btn btn-primary">Cancel</button>
+                    <button type="button" id="buttonLogout" class="btn btn-primary">Log out</button>
+
                 </div>
             </div>
         </div>

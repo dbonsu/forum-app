@@ -9,9 +9,7 @@
 
 namespace ForumApp.DataModel
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class Password
     {
         public long ID { get; set; }

@@ -1,10 +1,6 @@
 ﻿using ForumApp.Common.Utility;
 using ForumApp.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
@@ -16,6 +12,7 @@ namespace ForumApp.Services
         private IPasswordHash _passwordHash;
         private IPasswordService _passwordService;
         private IUserService _userService;
+        private bool isAuthenticated = false;
 
         /// <summary>
         /// public constructor
@@ -28,6 +25,14 @@ namespace ForumApp.Services
             _passwordHash = passwordHash;
             _passwordService = passwordService;
             _userService = userService;
+        }
+
+        public bool IsAuthenticated
+        {
+            get
+            {
+                return this.isAuthenticated;
+            }
         }
 
         public void LogOut(long userID)
@@ -43,11 +48,14 @@ namespace ForumApp.Services
         /// <returns></returns>
         public bool ValidateUser(string username, string password)
         {
-            var user = _userService.GetUserByUsername(username);
-            if (user != null && user.IsActive)
+            var userDTO = _userService.GetValidateUser(username);
+            if (userDTO != null)
             {
-                var correctHash = _passwordService.GetHash(user.ID);
-                return _passwordHash.ValidatePassword(password, correctHash);
+                var correctHash = _passwordService.GetHash(userDTO.UserID);
+                if (correctHash != null)
+                {
+                    return _passwordHash.ValidatePassword(password, correctHash);
+                }
             }
             return false;
         }
