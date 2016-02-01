@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessAutoMapping\BusinessMapperConfig.cs" />
+    <Compile Include="FakeEntity.cs" />
     <Compile Include="ForumEntity.cs" />
     <Compile Include="ForumThreadEntity.cs" />
     <Compile Include="InstantMessageEntity.cs" />

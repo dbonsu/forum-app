@@ -1,10 +1,20 @@
 ﻿using ForumApp.Common.Utility;
+using ForumApp.Filter;
 using ForumApp.Services.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace ForumApp.Controllers
 {
+    public class Body
+    {
+        public string Name { get; set; }
+    }
+
     public class DebugController : ApiController
     {
         private ILoginService _loginService;
@@ -38,6 +48,23 @@ namespace ForumApp.Controllers
             return login;
         }
 
+        [BasicFilter]
+        [Route("api/Debug/body")]
+        [HttpGet]
+        public HttpResponseMessage GetBody(string name)
+        {
+            var b = new Body { Name = name };
+            HttpResponseMessage res;
+            if (b.Name.Equals("derick"))
+            {
+                res = Request.CreateResponse<Body>(HttpStatusCode.OK, b);
+            }
+            else {
+                res = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            return res;
+        }
+
         [Route("api/Debug/createhash")]
         [HttpPost]
         public string GetHash(string password)
@@ -45,15 +72,12 @@ namespace ForumApp.Controllers
             return _passwordHash.CreateHash(password);
         }
 
+        [BaseAuthenticationFilter]
         [HttpGet]
-        public IEnumerable<string> GetTheStrings()
+        [Route("api/Debug/res")]
+        public string GetTheStrings()
         {
-            return new List<string>
-            {
-                "hell",
-                "you",
-                "there"
-            };
+            return "hello";
         }
 
         [Route("api/Debug/generateToken")]
@@ -61,7 +85,8 @@ namespace ForumApp.Controllers
         public string GetToken(string username, string role)
         {
             var token = _tokenUtility.GenerateToken(username, role);
-            _tokenUtility.ValidateToken(token);
+
+            bool a = _tokenUtility.ValidateToken(token);
             return token;
         }
 

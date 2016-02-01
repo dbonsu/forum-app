@@ -19,6 +19,7 @@ namespace ForumApp.Services.ServiceIocConfig
             builder.Register<IUserService>(u => new UserService(new ForumAppEntities()));
             builder.RegisterType<UserSubscription>().As<IUserSubscriptionService>();
             builder.RegisterType<LoginService>().As<ILoginService>();
+            builder.Register<IFakeService>(f => new FakeService(new System.Net.Http.HttpClient()));
         }
     }
 }

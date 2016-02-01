@@ -18,8 +18,7 @@
                 </button>
                 @Html.ActionLink("Your Forum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <button id="loginBtn" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-loginForm">Log in</button>
-                <button id="logoutBtn" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-logout">Log out</button>
-               
+                <button id="logoutBtn" type="button" class="btn btn-sm btn-primary hideBtn" data-toggle="modal" data-target="#modal-logout">Log out</button>
             </div>
             <div>
             </div>
@@ -30,7 +29,6 @@
                     <li>@Html.ActionLink("Forum", "Forum", "Home", new { area = "" }, null)</li>
                 </ul>
             </div>
-
         </div>
     </div>
     <div class="modal fade" id="modal-loginForm">
@@ -66,7 +64,6 @@
                 <div class="modal-body">
                     <button type="button" id="buttonLogout-cancel" class="btn btn-primary">Cancel</button>
                     <button type="button" id="buttonLogout" class="btn btn-primary">Log out</button>
-
                 </div>
             </div>
         </div>

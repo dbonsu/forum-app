@@ -184,7 +184,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filter\BaseAuthenticationFilter.cs" />
-    <Compile Include="Filter\BaseAuthenticationIdentity.cs" />
+    <Compile Include="Filter\ForumAuthenticationHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

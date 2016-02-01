@@ -5,6 +5,9 @@ using ForumApp.Services.Interfaces;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Principal;
+using System.Threading;
+using System.Web;
 using System.Web.Http;
 
 namespace ForumApp.Controllers
@@ -44,9 +47,13 @@ namespace ForumApp.Controllers
                 var response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
                 response.Headers.Add("forum-token", token);
                 response.Headers.Add("Access-Control-Expose-Headers", "forum-token");
-                return response;
 
-                //return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
+                //add user principal
+                string[] roles = { simpleUser.RoleName };
+                var identity = new GenericIdentity(simpleUser.Username, "Basic");
+                var principal = new GenericPrincipal(identity, roles);
+                Thread.CurrentPrincipal = principal;
+                return response;
             }
         }
 

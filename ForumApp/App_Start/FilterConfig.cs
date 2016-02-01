@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using ForumApp.Filter;
+using System.Web.Mvc;
 
 namespace ForumApp
 {
@@ -7,6 +8,7 @@ namespace ForumApp
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            //filters.Add(new BaseAuthenticationFilter());
         }
     }
 }

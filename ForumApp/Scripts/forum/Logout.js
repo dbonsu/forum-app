@@ -10,7 +10,9 @@ var logoutOption = {
             if (oldtoken != null) {
                 //to do remove token from storage
                 //then hide modal
-                alert('logout');
+                $('#logoutBtn').addClass('hideBtn');
+                $('#loginBtn').removeClass('hideBtn');
+                $('#modal-logout').modal('hide');
             } else {
                 alert('no token');
             }

@@ -58,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="FakeService.cs" />
     <Compile Include="ForumService.cs" />
     <Compile Include="ForumThreadService.cs" />
     <Compile Include="IMService.cs" />
+    <Compile Include="Interfaces\IFakeService.cs" />
     <Compile Include="Interfaces\IForumService.cs" />
     <Compile Include="Interfaces\IIMService.cs" />
     <Compile Include="Interfaces\ILoginAttemptService.cs" />

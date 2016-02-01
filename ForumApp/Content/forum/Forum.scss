@@ -36,6 +36,11 @@ $forum-margin: 10px;
     font-size: $forum-font-size;
 }
 
+#logoutBtn {
+    margin-top: $forum-margin;
+    font-size: $forum-font-size;
+}
+
 .modal-header-background {
     background-color: $forum-main-color;
     color: white;

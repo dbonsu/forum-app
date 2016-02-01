@@ -18,6 +18,8 @@
         function loginSuccess(data, stringData, xqXHR) {
             var token = xqXHR.getResponseHeader("forum-token");
             window.sessionStorage.setItem("forum-token", token);
+            $('#loginBtn').addClass('hideBtn');
+            $('#logoutBtn').removeClass('hideBtn');
             $('#modal-loginForm').modal('hide');
         };
 
