@@ -1,29 +1,34 @@
 ﻿using ForumApp.BusinessEntities;
+using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
     /// <summary>
     /// IForumService concrete class
     /// </summary>
-    public class ForumService : IForumService
+    public class ForumService : BaseService, IForumService
     {
-        public long CreateNewForum(ForumEntity newForum)
+        private ForumAppEntities forumAppEntities;
+
+        public ForumService(ForumAppEntities forumAppEntities)
+        {
+            _context = forumAppEntities;
+        }
+
+        public long CreateNewForum(Forum newForum)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteForumEntity(long ForumEntityID)
+        public bool DeleteForum(long ForumID)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ForumEntity> GetAllForumEntities()
+        public IEnumerable<Forum> GetAllForumEntities()
         {
             throw new NotImplementedException();
         }
@@ -33,17 +38,17 @@ namespace ForumApp.Services
             throw new NotImplementedException();
         }
 
-        public ForumEntity GetForumByID(long forumID)
+        public Forum GetForumByID(long forumID)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ForumEntity> GetForumEntityByUserID(long userID)
+        public IEnumerable<Forum> GetForumByUserID(long userID)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateForumEntity(long ForumEntityID, ForumEntity forumToUpdate)
+        public bool UpdateForum(long ForumID, Forum forumToUpdate)
         {
             throw new NotImplementedException();
         }

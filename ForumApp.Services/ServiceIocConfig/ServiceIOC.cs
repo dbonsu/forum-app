@@ -1,11 +1,7 @@
 ﻿using Autofac;
 using ForumApp.Common;
+using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services.ServiceIocConfig
 {
@@ -13,16 +9,17 @@ namespace ForumApp.Services.ServiceIocConfig
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ForumService>().As<IForumService>();
+            builder.Register<IForumService>(f => new ForumService(new ForumAppEntities()));
             builder.RegisterType<ForumThreadService>().As<IForumThreadService>();
             builder.RegisterType<IMService>().As<IIMService>();
             builder.RegisterType<LoginAttemptService>().As<ILoginAttemptService>();
-            builder.RegisterType<PasswordService>().As<IPasswordService>();
+            builder.Register<IPasswordService>(p => new PasswordService(new ForumAppEntities()));
             builder.RegisterType<ThreadReplyService>().As<IThreadReplyService>();
             builder.RegisterType<TopicService>().As<ITopicService>();
-            builder.RegisterType<UserService>().As<IUserService>();
+            builder.Register<IUserService>(u => new UserService(new ForumAppEntities()));
             builder.RegisterType<UserSubscription>().As<IUserSubscriptionService>();
             builder.RegisterType<LoginService>().As<ILoginService>();
+            builder.Register<IFakeService>(f => new FakeService(new System.Net.Http.HttpClient()));
         }
     }
 }

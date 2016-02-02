@@ -1,16 +1,13 @@
 ﻿using ForumApp.BusinessEntities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services.Interfaces
 {
     /// <summary>
     /// Interface for handling all user db
     /// </summary>
-    public interface IUserService
+    public interface IUserService : IDisposable
     {
         /// <summary>
         /// Creates a new user
@@ -42,6 +39,14 @@ namespace ForumApp.Services.Interfaces
         IEnumerable<UserEntity> GetAllUsers();
 
         /// <summary>
+        /// Returns a user with few fields. Fieldsmay grow as needed
+        ///
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        SimpleUserDTO GetSimpleUser(string username);
+
+        /// <summary>
         /// Gets a user from db
         /// </summary>
         /// <param name="userID"></param>
@@ -61,6 +66,13 @@ namespace ForumApp.Services.Interfaces
         /// <param name="userID"></param>
         /// <returns></returns>
         ProfileEntity GetUserProfileByUserID(long userID);
+
+        /// <summary>
+        /// retrieve a user with few properties
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        ValidateUserDTO GetValidateUser(string username);
 
         /// <summary>
         /// Updates a user

@@ -1,24 +1,20 @@
 ﻿using ForumApp.BusinessEntities;
-using ForumApp.DataModel.Repository.Interfaces;
+using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
     /// <summary>
     ///IPassword concrete class
     /// </summary>
-    public class PasswordService : IPasswordService
+    public class PasswordService : BaseService, IPasswordService
     {
-        private IUnitOfWork _unitOfWork;
-
-        public PasswordService(IUnitOfWork unitOfWork)
+        public PasswordService(ForumAppEntities context)
         {
-            _unitOfWork = unitOfWork;
+            _context = new ForumAppEntities();
         }
 
         public IEnumerable<PasswordEntity> GetAllPasswords(long userID)
@@ -44,7 +40,8 @@ namespace ForumApp.Services
         public string GetHash(long UserID)
         {
             string hash = null;
-            var pass = _unitOfWork.PasswordRepository.Get(p => p.UserID == UserID && p.IsActive);
+            var pass = _context.Passwords.Where(p => p.UserID == UserID && p.IsActive == true)
+                .Select(p => new { p.Hash }).FirstOrDefault();
             if (pass != null)
             {
                 hash = pass.Hash;

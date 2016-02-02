@@ -6,7 +6,7 @@
         var loginVm = {};
         loginVm.username = $('#username').val();
         loginVm.password = $('#password').val();
-        loginVm.rememberMe = $('#rememberme').is(' :checked');
+
         $.ajax({
             type: 'POST',
             url: baseUrl + loginUrl,
@@ -16,13 +16,15 @@
             error: loginFail
         });
         function loginSuccess(data, stringData, xqXHR) {
-            alert('to do authentication');
+            var token = xqXHR.getResponseHeader("forum-token");
+            window.sessionStorage.setItem("forum-token", token);
+            $('#loginBtn').addClass('hideBtn');
+            $('#logoutBtn').removeClass('hideBtn');
             $('#modal-loginForm').modal('hide');
         };
 
         function loginFail(jqXHR, textStatus, errorThrown) {
             var responseText = jQuery.parseJSON(jqXHR.responseText);
-
             displayError(responseText.message);
         };
 

@@ -1,10 +1,8 @@
 ﻿using ForumApp.BusinessEntities;
+using ForumApp.DataModel;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumApp.Services
 {
@@ -13,7 +11,7 @@ namespace ForumApp.Services
     /// </summary>
     public class ForumThreadService : IForumThreadService
     {
-        public long CreateForumThread(ForumThreadEntity thread)
+        public long CreateForumThread(ForumThread thread)
         {
             throw new NotImplementedException();
         }
@@ -28,17 +26,22 @@ namespace ForumApp.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ForumThreadEntity> GetAllThreadByUserID(long userID)
+        public IEnumerable<ForumThread> GetAllThreadByUserID(long userID)
         {
             throw new NotImplementedException();
         }
 
-        public ForumThreadEntity GetForumThreadByID(long thread)
+        public ForumThread GetForumThreadByID(long thread)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateForumReply(ForumThreadEntity thread, long threadID)
+        IEnumerable<ThreadReply> IForumThreadService.GetAllRepliesByThreadID(long threadID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateForumReply(ForumThread thread, long threadID)
         {
             throw new NotImplementedException();
         }

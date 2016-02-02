@@ -26,6 +26,10 @@
   margin-top: 10px;
   font-size: 15px; }
 
+#logoutBtn {
+  margin-top: 10px;
+  font-size: 15px; }
+
 .modal-header-background {
   background-color: #3F42AA;
   color: white; }

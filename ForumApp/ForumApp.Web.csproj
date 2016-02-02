@@ -183,6 +183,8 @@
     <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Filter\BaseAuthenticationFilter.cs" />
+    <Compile Include="Filter\ForumAuthenticationHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +254,7 @@
     <Content Include="Content\forum\Login.scss" />
     <None Include="Scripts\vendor\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\forum\Login.js" />
+    <Content Include="Scripts\forum\Logout.js" />
     <Content Include="Scripts\vendor\bootstrap.js" />
     <Content Include="Scripts\vendor\bootstrap.min.js" />
     <Content Include="Scripts\vendor\jquery-2.1.4.js" />
