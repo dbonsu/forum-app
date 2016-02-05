@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -199,6 +201,12 @@
     <Compile Include="WebAutoMapping\WebMapperConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Angular\app.js" />
+    <Content Include="Angular\forum\forumController.js" />
+    <Content Include="Angular\forum\partial-forum.html" />
+    <Content Include="Angular\forum\partial-welcome.html" />
+    <Content Include="Angular\login\loginController.js" />
+    <Content Include="Angular\login\partial-login.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\forum\Forum.css">
       <DependentUpon>Forum.scss</DependentUpon>
@@ -252,6 +260,15 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\forum\Login.scss" />
+    <Content Include="Scripts\vendor\angular-mocks.js" />
+    <Content Include="Scripts\vendor\angular-resource.js" />
+    <Content Include="Scripts\vendor\angular-resource.min.js" />
+    <Content Include="Scripts\vendor\angular-ui-router.js" />
+    <Content Include="Scripts\vendor\angular-ui-router.min.js" />
+    <Content Include="Scripts\vendor\angular.js" />
+    <Content Include="Scripts\vendor\angular.min.js" />
+    <Content Include="Scripts\vendor\angular.min.js.map" />
+    <Content Include="Scripts\vendor\angular-resource.min.js.map" />
     <None Include="Scripts\vendor\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\forum\Login.js" />
     <Content Include="Scripts\forum\Logout.js" />
@@ -310,11 +327,15 @@
   <ItemGroup>
     <Content Include="Scripts\vendor\jquery-2.1.4.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

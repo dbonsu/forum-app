@@ -24,7 +24,7 @@ namespace ForumApp.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult Thread(long topicID, long threadID)

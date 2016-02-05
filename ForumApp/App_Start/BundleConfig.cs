@@ -23,6 +23,19 @@ namespace ForumApp
                      "~/Scripts/forum/Logout.js"
                     ));
 
+            bundles.Add(new ScriptBundle("~/bundles/angularVendor").Include(
+                "~/Scripts/vendor/angular.min.js",
+                "~/Scripts/vendor/angular-ui-router.min.js",
+                "~/Scripts/vendor/angular-resource.min.js"
+
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularForum").Include(
+                    "~/Angular/app.js",
+                    "~/Angular/forum/forumController.js",
+                    "~/Angular/login/loginController.js"
+
+                ));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/vendor/bootstrap.css",
                       "~/Content/forum/Site.css",

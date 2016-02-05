@@ -1,5 +1,6 @@
 ﻿using ForumApp.Common.Utility;
 using ForumApp.Filter;
+using ForumApp.Models.ObjectVM;
 using ForumApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,14 @@ namespace ForumApp.Controllers
             return true;
         }
 
+        [Route("api/Debug/angularuser")]
+        [HttpPost]
+        public bool AngularTest([FromBody] LoginVM loginVM)
+        {
+            var result = loginVM;
+            return true;
+        }
+
         [Route("api/Debug/TestHash")]
         [HttpPost]
         public bool Debug(string username, string password)
@@ -48,7 +57,6 @@ namespace ForumApp.Controllers
             return login;
         }
 
-        [BasicFilter]
         [Route("api/Debug/body")]
         [HttpGet]
         public HttpResponseMessage GetBody(string name)
