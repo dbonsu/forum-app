@@ -3,14 +3,14 @@
 
     angular
         .module('forumApp')
-        .controller('forumController', forumController);
+        .controller('ForumController', ForumController);
 
-    forumController.$inject = ['$location'];
+    ForumController.$inject = ['$location'];
 
-    function forumController($location) {
+    function ForumController($location) {
         /* jshint validthis:true */
         var vm = this;
-        vm.title = 'forumController';
+        vm.title = 'ForumController';
         vm.person = {
             firstname: 'derick',
             lastname: 'bonsu'

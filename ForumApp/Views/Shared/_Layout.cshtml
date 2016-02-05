@@ -16,60 +16,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Your Forum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button id="loginBtn" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-loginForm">Log in</button>
-                <button id="logoutBtn" type="button" class="btn btn-sm btn-primary hideBtn" data-toggle="modal" data-target="#modal-logout">Log out</button>
+               
             </div>
             <div>
             </div>
-            <div id="header-links" class="navbar-collapse collapse">
+            <div id="header-links" class="navbar-collapse collapse" ng-controller="HomeController as vm">
                 <ul class="nav navbar-nav">
                     <li> <a ui-sref="home">Home</a></li>
-                    <li> <a ui-sref="forum">forum</a></li>
-                    <li ng-hide="{{2 > 10}}"><a ui-sref="login">Login</a></li>
-
-                    <li>@Html.ActionLink("Forum", "Forum", "Home", new { area = "" }, null)</li>
+                    <li> <a ui-sref="forum">Forum</a></li>
+                    <li ng-hide="vm.isAuthenticated" class="btn btn-default" >
+                        
+                        <a ui-sref="login">Login</a>
+                    </li>
+                    <li ng-hide="!vm.isAuthenticated" ><button type="submit" ng-click="vm.logout()" class="btn btn-default">Log Out</button> 
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-loginForm">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-background">
-                    <button id="modal-btn-id" type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="text-center">Please Log In</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form" id="loginForm" method="post">
-                        <div id="login-main-error"></div>
-                        <div class="form-group">
-                            <input id="username" type="text" name="username" class="form-control text-center" placeholder="Username" />
-                        </div>
-                        <div class="form-group">
-                            <input id="password" type="password" name="password" class="form-control text-center" placeholder="Password" />
-                        </div>
-
-                        <input id="submitBtn" name="submitBtn" type="submit" class="btn btn-primary btn-block" value="Log In" />
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="modal-logout">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-background">
-                    <button id="modal-logout-btn-id" type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="text-center">Log out?</h4>
-                </div>
-                <div class="modal-body">
-                    <button type="button" id="buttonLogout-cancel" class="btn btn-primary">Cancel</button>
-                    <button type="button" id="buttonLogout" class="btn btn-primary">Log out</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <div class="container body-content">
 
         @RenderBody()

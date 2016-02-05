@@ -33,7 +33,10 @@ namespace ForumApp
             bundles.Add(new ScriptBundle("~/bundles/angularForum").Include(
                     "~/Angular/app.js",
                     "~/Angular/forum/forumController.js",
-                    "~/Angular/login/loginController.js"
+                    "~/Angular/login/loginController.js",
+                    "~/Angular/login/loginService.js",
+                    "~/Angular/home/homeController.js",
+                     "~/Angular/home/homeService.js"
 
                 ));
             bundles.Add(new StyleBundle("~/Content/css").Include(

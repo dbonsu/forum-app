@@ -205,8 +205,11 @@
     <Content Include="Angular\forum\forumController.js" />
     <Content Include="Angular\forum\partial-forum.html" />
     <Content Include="Angular\forum\partial-welcome.html" />
+    <Content Include="Angular\home\homeController.js" />
+    <Content Include="Angular\home\homeService.js" />
     <Content Include="Angular\login\loginController.js" />
     <Content Include="Angular\login\partial-login.html" />
+    <Content Include="Angular\login\loginService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\forum\Forum.css">
       <DependentUpon>Forum.scss</DependentUpon>

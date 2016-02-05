@@ -8,18 +8,20 @@
         $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: '/Angular/forum/partial-welcome.html'
+            templateUrl: '/Angular/forum/partial-welcome.html',
+            //controller: 'HomeController',
+            //controllerAs: 'home'
         })
         .state('forum', {
             url: '/forum',
             templateUrl: '/Angular/forum/partial-forum.html',
-            controller: 'forumController',
+            controller: 'ForumController',
             controllerAs: 'forum'
         })
         .state('login', {
             url: '/login',
             templateUrl: '/Angular/login/partial-login.html',
-            controller: 'loginController',
+            controller: 'LoginController',
             controllerAs: 'login'
         })
         .state('state3', {
