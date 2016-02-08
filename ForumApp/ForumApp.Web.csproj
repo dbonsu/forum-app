@@ -202,6 +202,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular\app.js" />
+    <Content Include="Angular\common\common.js" />
+    <Content Include="Angular\navigation\navigationController.js" />
+    <Content Include="Angular\debug\debugController.js" />
+    <Content Include="Angular\debug\partial-debug.html" />
     <Content Include="Angular\forum\forumController.js" />
     <Content Include="Angular\forum\partial-forum.html" />
     <Content Include="Angular\forum\partial-welcome.html" />

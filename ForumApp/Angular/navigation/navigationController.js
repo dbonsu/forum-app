@@ -3,13 +3,14 @@
 
     angular
         .module('forumApp')
-        .controller('HomeController', HomeController);
+        .controller('NavigationController', NavigationController);
 
-    HomeController.$inject = ['$state', '$window', 'tokenService', 'commonConstant'];
+    NavigationController.$inject = ['$location', '$state', '$window', 'tokenService', 'commonConstant'];
 
-    function HomeController($state, $window, tokenService, commonConstant) {
+    function NavigationController($location, $state, $window, tokenService, commonConstant) {
         /* jshint validthis:true */
         var vm = this;
+        vm.title = 'navigationController';
         vm.isAuthenticated = false;
         vm.logout = logout;
         vm.loginPage = loginPage;

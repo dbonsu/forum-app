@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('forumApp', ['ui.router'])
+    angular.module('forumApp', ['ui.router', 'common.services'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
 
@@ -9,6 +9,7 @@
         .state('home', {
             url: '/',
             templateUrl: '/Angular/forum/partial-welcome.html',
+           
             //controller: 'HomeController',
             //controllerAs: 'home'
         })
@@ -24,9 +25,11 @@
             controller: 'LoginController',
             controllerAs: 'login'
         })
-        .state('state3', {
-            url: '/state3',
-            templateUrl: '/partials/partial-state3.html'
+        .state('debug', {
+            url: '/debug',
+            templateUrl: '/Angular/debug/partial-debug.html',
+            controller: 'DebugController',
+            controllerAs: 'debug'
         })
     });
 })();

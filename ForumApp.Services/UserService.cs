@@ -40,9 +40,27 @@ namespace ForumApp.Services
             return userEntities;
         }
 
+        /// <summary>
+        /// Returns a user with few fields. Fieldsmay grow as needed
+        ///
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public SimpleUserDTO GetSimpleUser(string username)
         {
             var user = _context.Users.Where(u => u.Username == username).ProjectTo<SimpleUserDTO>();
+            return user.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Generic method for retrieving different DTOs
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public T GetUser<T>(string username) where T : class
+        {
+            var user = _context.Users.Where(u => u.Username == username).ProjectTo<T>();
             return user.FirstOrDefault();
         }
 

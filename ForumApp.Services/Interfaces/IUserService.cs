@@ -47,6 +47,14 @@ namespace ForumApp.Services.Interfaces
         SimpleUserDTO GetSimpleUser(string username);
 
         /// <summary>
+        /// Generic method for retrieving different DTOs
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        T GetUser<T>(string username) where T : class;
+
+        /// <summary>
         /// Gets a user from db
         /// </summary>
         /// <param name="userID"></param>

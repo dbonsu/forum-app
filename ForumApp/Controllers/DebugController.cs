@@ -1,4 +1,5 @@
-﻿using ForumApp.Common.Utility;
+﻿using ForumApp.BusinessEntities;
+using ForumApp.Common.Utility;
 using ForumApp.Filter;
 using ForumApp.Models.ObjectVM;
 using ForumApp.Services.Interfaces;
@@ -32,11 +33,12 @@ namespace ForumApp.Controllers
             _tokenUtility = tokenUtility;
         }
 
+        [BaseAuthenticationFilter]
         [Route("api/Debug/Users")]
         [HttpGet]
         public bool A()
         {
-            var users = _userService.GetAllUsers();
+            var users = _userService.GetUser<SimpleUserDTO>("derick");
             return true;
         }
 

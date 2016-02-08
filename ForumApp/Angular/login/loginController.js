@@ -5,28 +5,25 @@
         .module('forumApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', 'LoginService'];
+    LoginController.$inject = ['$window', 'LoginService', 'commonConstant', '$state'];
 
-    function LoginController($location, LoginService) {
+    function LoginController($window, LoginService, commonConstant, $state) {
         /* jshint validthis:true */
         var vm = this;
-        vm.title = 'LoginController';
-
-        vm.user = {
-            username: '',
-            password: '',
-            remeberme: false
+        vm.user = {};
+        vm.login = login;
+        
+        function login() {
+            vm.user.username
+            vm.user.password
+            LoginService.logUser(vm.user).then(function () {
+                //force reload then navigate to return url
+                //to do: get return url
+                $window.location.reload();
+                $state.go('home');
+            },
+                function (error) { }
+                )
         }
-        vm.loginUser = loginUser;
-
-
-        function loginUser() {
-            this.user.username// = this.username;
-            this.user.password //= this.password;
-            this.user.rememberMe //= this.remeberMe;
-            LoginService.logUser(this.user);
-            
-        }
-
     }
 })();
